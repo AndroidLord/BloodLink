@@ -18,7 +18,7 @@
 
         app:lottie_autoPlay="true"
         app:lottie_loop="false"
-        app:lottie_rawRes="@raw/sanimation"
+        app:lottie_rawRes="@raw/blood"
         tools:ignore="ImageContrastCheck" />
 
 
