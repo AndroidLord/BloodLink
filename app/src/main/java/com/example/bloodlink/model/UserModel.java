@@ -36,14 +36,26 @@ public class UserModel {
     // Second one denote Time of last Donation
     private HashMap<Integer,Integer> bloodDonation;
 
-
-    // Getters && Setters
-
-
-    public static void setInstance(UserModel instance) {
-        UserModel.instance = instance;
+    public UserModel() {
     }
 
+    // Constructors
+    public UserModel(String userId, String userImage, String userName, String userPassword, String emailId, String phoneNo, String bloodGroup, String country, String state, String locality, String sex, HashMap<Integer, Integer> bloodDonation) {
+        this.userId = userId;
+        this.userImage = userImage;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.emailId = emailId;
+        this.phoneNo = phoneNo;
+        this.bloodGroup = bloodGroup;
+        this.country = country;
+        State = state;
+        Locality = locality;
+        this.sex = sex;
+        this.bloodDonation = bloodDonation;
+    }
+
+    // Getters && Setters
     public String getUserId() {
         return userId;
     }
