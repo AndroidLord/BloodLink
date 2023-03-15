@@ -126,7 +126,7 @@ public class CreateActivity extends AppCompatActivity {
                                                     userModel.setUserName(task.getResult().getString("userName"));
                                                     userModel.setEmailId(task.getResult().getString("userEmail"));
 
-                                                    //startActivity(new Intent(CreateActivity.this,LoginActivity.class));
+                                                    startActivity(new Intent(CreateActivity.this,MainActivity.class));
 
                                                 }
                                             }
