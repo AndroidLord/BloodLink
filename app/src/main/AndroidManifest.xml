@@ -11,15 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodLink"
         tools:targetApi="31">
+
         <activity
             android:name=".DrawerActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".splashActivity"
             android:exported="true">
@@ -29,9 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".CreateActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

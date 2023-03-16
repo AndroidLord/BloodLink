@@ -38,7 +38,7 @@
 
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/userNameEditText_create"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
@@ -55,7 +55,7 @@
 
 
             <EditText
-                android:id="@+id/emailaddress"
+                android:id="@+id/emailEditText_create"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
@@ -70,7 +70,7 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordEditText_create"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
@@ -84,7 +84,7 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/createAccountButton_create"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
