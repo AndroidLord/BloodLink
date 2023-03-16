@@ -6,6 +6,8 @@
     <string name="not_yet_registered_signup_now">Not yet registered? SignUp Now</string>
     <string name="rigister_here">Rigister Here</string>
     <string name="email">Email</string>
+    <string name="navigation_drawer_open">Open drawer navigation</string>
+    <string name="navigation_drawer_close">Close drawer navigation</string>
     <string name="register">Register</string>
     <string name="registered_login_here">Registered? Login here</string>
 </resources>
