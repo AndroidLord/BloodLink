@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
+
+
+
         // ID's
         recyclerView = findViewById(R.id.recyclerView_main);
 
