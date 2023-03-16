@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+    </group>
+    <item android:title="Account Detail">
+
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profile_icon"
+                    android:title="Profile" />
+
+                <item
+                    android:id="@+id/nav_achievement"
+                    android:icon="@drawable/achievement_icon"
+                    android:title="Achievement" />
+
+            </group>
+        </menu>
+
+    </item>
+
+    <item android:title="Requests">
+
+        <menu>
+            <group android:checkableBehavior="single">
+
+
+                <item
+                    android:id="@+id/nav_bloodRequest"
+                    android:icon="@drawable/blood_icon"
+                    android:title="Request Blood" />
+
+
+            </group>
+        </menu>
+
+    </item>
+
+    <item android:title="Communication">
+
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_termCondition"
+                    android:icon="@drawable/termcondition_icon"
+                    android:title="Terms &amp; Condition" />
+
+                <item
+                    android:id="@+id/nav_aboutUs"
+                    android:icon="@drawable/aboutus_icon"
+                    android:title="About us" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Logout" />
+
+            </group>
+        </menu>
+
+    </item>
+
+
+</menu>
