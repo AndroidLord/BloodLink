@@ -42,16 +42,16 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         fragmentContainer = findViewById(R.id.fragment_container);
 
         setSupportActionBar(toolbar);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
 
         loadFragment(new HomeFragment());
-
+        setTitle("Home");
 
 
     }
@@ -59,10 +59,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public void onBackPressed() {
 
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else{
+        } else {
             super.onBackPressed();
         }
 
@@ -71,7 +70,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.nav_profile:
                 loadFragment(new ProfileFragment());
@@ -102,7 +101,10 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 break;
 
         }
-            drawerLayout.closeDrawer(GravityCompat.START);
+        item.setChecked(true);
+        setTitle(item.getTitle());
+
+        drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
     }
@@ -118,7 +120,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-        transaction.add(R.id.fragment_container,fragment);
+
+        transaction.replace(R.id.fragment_container, fragment);
+        //transaction.add(R.id.fragment_container,fragment);
         transaction.commit();
 
 
