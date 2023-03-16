@@ -10,4 +10,6 @@
     <string name="navigation_drawer_close">Close drawer navigation</string>
     <string name="register">Register</string>
     <string name="registered_login_here">Registered? Login here</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -15,14 +15,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        int SPLASH_TIMMING = 3000;
+        int SPLASH_TIMING = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
-        },SPLASH_TIMMING);
+        },SPLASH_TIMING);
 
     }
 }

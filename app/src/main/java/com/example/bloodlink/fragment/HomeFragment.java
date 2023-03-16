@@ -1,42 +1,43 @@
-package com.example.bloodlink;
+package com.example.bloodlink.fragment;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
+import com.example.bloodlink.R;
 import com.example.bloodlink.adaptors.PatientRecyclerAdaptor;
 import com.example.bloodlink.model.PatientModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-
+public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PatientRecyclerAdaptor patientRecyclerAdaptor;
 
     private List<PatientModel> patientModelList;
 
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
 
-
-
-
-
-
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         // ID's
-        recyclerView = findViewById(R.id.recyclerView_main);
+        recyclerView = view.findViewById(R.id.recyclerView_main);
 
         // Initiating List
         patientModelList = new ArrayList<>();
@@ -53,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Setting Recycler View
-        patientRecyclerAdaptor = new PatientRecyclerAdaptor(MainActivity.this,patientModelList);
+        patientRecyclerAdaptor = new PatientRecyclerAdaptor(getContext(),patientModelList);
         recyclerView.setAdapter(patientRecyclerAdaptor);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+
+        return view;
     }
 }
