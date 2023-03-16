@@ -26,7 +26,7 @@
             android:padding="25dp">
 
             <TextView
-                android:id="@+id/loginText"
+                android:id="@+id/titleTextView_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"

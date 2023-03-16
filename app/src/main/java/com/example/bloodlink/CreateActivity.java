@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bloodlink.model.UserModel;
@@ -37,6 +38,7 @@ public class CreateActivity extends AppCompatActivity {
     useremail,
     userImage;
 
+    private TextView loginText;
 
     private Button createAccountButton;
 
@@ -64,7 +66,7 @@ public class CreateActivity extends AppCompatActivity {
         username = findViewById(R.id.userNameEditText_create);
         userpassword = findViewById(R.id.passwordEditText_create);
         useremail = findViewById(R.id.emailEditText_create);
-
+        loginText = findViewById(R.id.loginTextView_create);
         createAccountButton = findViewById(R.id.createAccountButton_create);
 
         createAccountButton.setOnClickListener(new View.OnClickListener(){
@@ -73,6 +75,13 @@ public class CreateActivity extends AppCompatActivity {
 
                 createAccountWithEmailAndPassword();
 
+            }
+        });
+
+        loginText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateActivity.this,LoginActivity.class));
             }
         });
 
@@ -126,7 +135,7 @@ public class CreateActivity extends AppCompatActivity {
                                                     userModel.setUserName(task.getResult().getString("userName"));
                                                     userModel.setEmailId(task.getResult().getString("userEmail"));
 
-                                                    startActivity(new Intent(CreateActivity.this,MainActivity.class));
+                                                    startActivity(new Intent(CreateActivity.this,DrawerActivity.class));
 
                                                 }
                                             }
