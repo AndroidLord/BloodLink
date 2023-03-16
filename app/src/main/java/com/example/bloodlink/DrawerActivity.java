@@ -75,6 +75,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
             case R.id.nav_profile:
                 loadFragment(new ProfileFragment());
+                //fragmentContainer.
                 break;
 
             case R.id.nav_achievement:

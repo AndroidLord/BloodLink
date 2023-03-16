@@ -135,6 +135,7 @@ public class CreateActivity extends AppCompatActivity {
                                                     userModel.setUserName(task.getResult().getString("userName"));
                                                     userModel.setEmailId(task.getResult().getString("userEmail"));
 
+                                                    Toast.makeText(CreateActivity.this, "*Account Created Successfully*", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(CreateActivity.this,DrawerActivity.class));
 
                                                 }

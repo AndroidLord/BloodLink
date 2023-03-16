@@ -74,6 +74,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
             descriptionTextView = itemView.findViewById(R.id.description_item);
             userImageView = itemView.findViewById(R.id.imageView_item);
 
+
         }
     }
 }
