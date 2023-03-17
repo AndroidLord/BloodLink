@@ -17,7 +17,7 @@
     <string name="last_name">Last Name</string>
     <string name="male">Male</string>
     <string name="radiobutton">RadioButton</string>
-    <string name="firest_name">Firest Name</string>
+    <string name="firest_name">First Name</string>
     <string name="male1">Male</string>
     <string name="female1">Female</string>
     <string-array name="Blood_Group">
@@ -33,4 +33,6 @@
     <string name="required_blood_group_type">Required Blood Group Type</string>
     <string name="save">Save</string>
     <string name="_91_84783xxxxx">+91 84783xxxxx</string>
+    <string name="_91_xxxviii">+91 XXXVIII</string>
+    <string name="_91_000000000">+91 000000000</string>
 </resources>

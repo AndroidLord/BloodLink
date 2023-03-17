@@ -19,7 +19,7 @@ import com.example.bloodlink.model.PatientModel;
 import com.example.bloodlink.model.UserModel;
 
 
-public class RequestBloodFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class RequestBloodFragment extends Fragment {
 
 
     @Override
@@ -33,22 +33,22 @@ public class RequestBloodFragment extends Fragment implements AdapterView.OnItem
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Blood_Group, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String spinnerText = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getContext(),spinnerText, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         return view;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
