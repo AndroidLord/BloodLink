@@ -84,18 +84,18 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Please Enter Details", Toast.LENGTH_SHORT).show();
                     }
                     else if (email.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, "Please Enter Your Email", Toast.LENGTH_SHORT).show();
+                        useremail.setError("Please Enter Your Email");
+                        //Toast.makeText(LoginActivity.this, "Please Enter Your Email", Toast.LENGTH_SHORT).show();
                         useremail.requestFocus();
                     }
                     else{
-                        Toast.makeText(LoginActivity.this, "Please Enter Your Password", Toast.LENGTH_SHORT).show();
+                        userpassword.setError("Please Enter Your Password");
+                        //Toast.makeText(LoginActivity.this, "Please Enter Your Password", Toast.LENGTH_SHORT).show();
                         userpassword.requestFocus();
                     }
 
                 }
 
-
-                //startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
 
             }
         });
