@@ -5,19 +5,19 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="#fff"
+android:background="@drawable/splash_bg"
 tools:context="SplashActivity">
 
 
-<com.airbnb.lottie.LottieAnimationView
-    android:id="@+id/ianimation"
-    android:layout_width="wrap_content"
-    android:layout_height="400dp"
-    android:layout_marginTop="150dp"
-    app:lottie_autoPlay="true"
-    app:lottie_loop="false"
-    app:lottie_rawRes="@raw/blood"
-    tools:ignore="ImageContrastCheck" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/ianimation"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_marginTop="150dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/blood"
+        tools:ignore="ImageContrastCheck" />
 
 
-    </RelativeLayout>
+</RelativeLayout>
