@@ -22,8 +22,8 @@ public class RequestBloodFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_request_blood, container, false);
-
+        View view;
+        view = inflater.inflate(R.layout.fragment_request_blood, container, false);
 
 
         return view;

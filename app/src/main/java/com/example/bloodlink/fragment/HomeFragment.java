@@ -1,5 +1,6 @@
 package com.example.bloodlink.fragment;
 
+import android.graphics.PathEffect;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -42,12 +43,12 @@ public class HomeFragment extends Fragment {
         // Initiating List
         patientModelList = new ArrayList<>();
 
-        PatientModel patientModel = new PatientModel("Need O+ Blood Donor",
-                "Vineet",
-                "Pheniox Plassio",
-                "Posted on: 05:45, 14/03/23",
-                "Tommorow",
-                "Description: My brother had an accident late night and is urgent need of blood. Please Help! \uD83D\uDE4F\uD83D\uDE4F");
+        PatientModel patientModel = new PatientModel();
+        patientModel.setPatientName("Vineet");
+        patientModel.setAddress("Sahara Hospital");
+        patientModel.setPostedOn("Posted on: 05:45, 14/03/23");
+        patientModel.setDueDate("Tomorrow");
+        patientModel.setDescription("Description: My brother had an accident late night and is urgent need of blood. Please Help! \uD83D\uDE4F\uD83D\uDE4F");
 
         for (int i=0;i<10;i++){
             patientModelList.add(patientModel);

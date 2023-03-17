@@ -5,79 +5,96 @@ import android.widget.TextView;
 
 public class PatientModel {
 
-    private String title,
-            author,
-            location,
-            postedOn,
-            dueDate,
-            description;
 
-    private String userImage,patientImage;
+    private String patientName,
+    gender,
+    severity,
+    email,
+    phoneNo,
+    bloodGroup,
+    address,
+    description,
+    age,
+    relationToPatient,
+    patientImage;
+
+    private String dueDate,PostedOn,userName,userImage;
 
     public PatientModel() {
     }
 
-    // User Image, Constructor
-    public PatientModel(String title, String author, String location, String postedOn, String dueDate, String description, String userImage) {
-        this.title = title;
-        this.author = author;
-        this.location = location;
-        this.postedOn = postedOn;
-        this.dueDate = dueDate;
+    public PatientModel(String patientName, String gender, String severity, String email, String phoneNo, String bloodGroup, String address, String description, String age, String relationToPatient, String patientImage, String dueDate, String postedOn, String userName, String userImage) {
+        this.patientName = patientName;
+        this.gender = gender;
+        this.severity = severity;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.bloodGroup = bloodGroup;
+        this.address = address;
         this.description = description;
-        this.userImage = userImage;
-    }
-
-    // without Image, Constructor
-    public PatientModel(String title, String author, String location, String postedOn, String dueDate, String description) {
-        this.title = title;
-        this.author = author;
-        this.location = location;
-        this.postedOn = postedOn;
-        this.dueDate = dueDate;
-        this.description = description;
-        this.userImage = userImage;
+        this.age = age;
+        this.relationToPatient = relationToPatient;
         this.patientImage = patientImage;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getPostedOn() {
-        return postedOn;
-    }
-
-    public void setPostedOn(String postedOn) {
-        this.postedOn = postedOn;
-    }
-
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
+        PostedOn = postedOn;
+        this.userName = userName;
+        this.userImage = userImage;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
@@ -88,12 +105,20 @@ public class PatientModel {
         this.description = description;
     }
 
-    public String getUserImage() {
-        return userImage;
+    public String getAge() {
+        return age;
     }
 
-    public void setUserImage(String userImage) {
-        this.userImage = userImage;
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getRelationToPatient() {
+        return relationToPatient;
+    }
+
+    public void setRelationToPatient(String relationToPatient) {
+        this.relationToPatient = relationToPatient;
     }
 
     public String getPatientImage() {
@@ -102,5 +127,37 @@ public class PatientModel {
 
     public void setPatientImage(String patientImage) {
         this.patientImage = patientImage;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getPostedOn() {
+        return PostedOn;
+    }
+
+    public void setPostedOn(String postedOn) {
+        PostedOn = postedOn;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 }

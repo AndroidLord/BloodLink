@@ -39,10 +39,10 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
 
         PatientModel patientModel = patientModelList.get(position);
 
-        holder.locationTextView.setText(patientModel.getLocation());
+        holder.locationTextView.setText(patientModel.getAddress());
         holder.postedOnTextView.setText(patientModel.getPostedOn());
         holder.dueDateTextView.setText(patientModel.getDueDate());
-        holder.authorTextView.setText(patientModel.getAuthor());
+        holder.authorTextView.setText(patientModel.getPatientName());
         holder.descriptionTextView.setText(patientModel.getDescription());
 
     }

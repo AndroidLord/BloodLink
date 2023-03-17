@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -23,6 +26,10 @@ import com.example.bloodlink.fragment.ProfileFragment;
 import com.example.bloodlink.fragment.RequestBloodFragment;
 import com.example.bloodlink.fragment.TermConditionFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,6 +37,15 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     Toolbar toolbar;
     private FrameLayout fragmentContainer;
+
+    // Setting up Firebase
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseUser currentUser;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference collectionReference = db.collection("PatientCollection");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +59,22 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         setSupportActionBar(toolbar);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        //Initiating Firestore
+        firebaseAuth = FirebaseAuth.getInstance();
+        currentUser = firebaseAuth.getCurrentUser();
+
+        authStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(currentUser!=null){
+
+                }
+                else{
+
+                }
+            }
+        };
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -111,7 +143,30 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     private void logoutPrompt() {
 
-        Toast.makeText(this, "You Have Logged out!", Toast.LENGTH_SHORT).show();
+        new AlertDialog.Builder(this)
+                        .setTitle("Logout")
+                        .setMessage("Do You Want To Logout")
+                        .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Toast.makeText(DrawerActivity.this, "You Have Logged out!", Toast.LENGTH_SHORT).show();
+                                firebaseAuth.signOut();
+                                startActivity(new Intent(DrawerActivity.this,LoginActivity.class));
+
+                            }
+                        })
+                        .setNeutralButton("Return", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(DrawerActivity.this, "Wise Decision", Toast.LENGTH_SHORT).show();
+                                loadFragment(new HomeFragment());
+                            }
+                        }).show();
+
+
+
+
     }
 
     private void loadFragment(Fragment fragment) {
