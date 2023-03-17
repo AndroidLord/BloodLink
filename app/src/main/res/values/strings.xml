@@ -12,4 +12,15 @@
     <string name="registered_login_here">Registered? Login here</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="request_for_blood">Request For Blood</string>
+    <string name="female">Female</string>
+    <string name="last_name">Last Name</string>
+    <string name="male">Male</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="firest_name">Firest Name</string>
+    <string name="male1">Male</string>
+    <string name="female1">Female</string>
+    <string name="required_blood_group_type">Required Blood Group Type</string>
+    <string name="save">Save</string>
+    <string name="_91_84783xxxxx">+91 84783xxxxx</string>
 </resources>
