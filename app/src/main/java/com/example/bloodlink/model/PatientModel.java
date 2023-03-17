@@ -14,6 +14,9 @@ public class PatientModel {
 
     private String userImage,patientImage;
 
+    public PatientModel() {
+    }
+
     // User Image, Constructor
     public PatientModel(String title, String author, String location, String postedOn, String dueDate, String description, String userImage) {
         this.title = title;
