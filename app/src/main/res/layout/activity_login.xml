@@ -41,7 +41,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableStart="@drawable/baseline_person_24"
+                android:drawableStart="@drawable/email_icon"
                 android:drawablePadding="8dp"
                 android:hint="@string/email"
                 android:padding="8dp"
