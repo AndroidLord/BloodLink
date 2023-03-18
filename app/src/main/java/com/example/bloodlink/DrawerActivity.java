@@ -134,6 +134,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         }
         item.setChecked(true);
+        if(item.getItemId()!=R.id.nav_logout)
         setTitle(item.getTitle());
 
         drawerLayout.closeDrawer(GravityCompat.START);

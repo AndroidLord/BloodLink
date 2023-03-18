@@ -137,7 +137,7 @@ public class CreateActivity extends AppCompatActivity {
 
                                                     Toast.makeText(CreateActivity.this, "*Account Created Successfully*", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(CreateActivity.this,DrawerActivity.class));
-
+                                                    finish();
                                                 }
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
