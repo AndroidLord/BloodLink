@@ -19,12 +19,13 @@ public class UserModel {
     // User Details
 
     private String userId;
-    private String userImage;
+
     private String userName;
-    private String userPassword;
     private String emailId;
 
     // Later when the app works
+    private String userPassword;
+    private String userImage;
     private String phoneNo;
     private String bloodGroup;
     private String country;

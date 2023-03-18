@@ -21,125 +21,167 @@
         android:background="@drawable/custom_edittext">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/titleTextView_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/request_for_blood"
+                android:textAlignment="center"
+                android:textColor="@color/red"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-       <ScrollView
+        </LinearLayout>
+
+       <LinearLayout
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-           <LinearLayout
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+           <ScrollView
                android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center_horizontal"
-               android:orientation="vertical"
-               android:padding="25dp">
-
-               <TextView
-                   android:id="@+id/titleTextView_login"
+               android:layout_height="wrap_content">
+               <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="@string/request_for_blood"
-                   android:textAlignment="center"
-                   android:textColor="@color/red"
-                   android:textSize="36sp"
-                   android:textStyle="bold" />
-
-               <EditText
-                   android:id="@+id/firstname"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:layout_marginTop="30dp"
-                   android:background="@drawable/custom_edittext"
-                   android:drawableStart="@drawable/baseline_person_24"
-                   android:drawablePadding="8dp"
-                   android:hint="@string/firest_name"
-                   android:padding="8dp"
-                   android:textColor="@color/black"
-                   android:textColorHighlight="@color/cardview_dark_background" />
-
-               <EditText
-                   android:id="@+id/lastname"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:layout_marginTop="20dp"
-                   android:background="@drawable/custom_edittext"
-                   android:drawableStart="@drawable/baseline_person_24"
-                   android:drawablePadding="8dp"
-                   android:hint="@string/last_name"
-                   android:padding="8dp"
-                   android:textColor="@color/black"
-                   android:textColorHighlight="@color/cardview_dark_background" />
+                   android:layout_gravity="center_horizontal"
+                   android:orientation="vertical"
+                   android:padding="25dp">
 
 
-               <RadioGroup
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="20dp"
-                   android:background="@drawable/custom_edittext"
-                   android:orientation="horizontal"
-                   android:layout_centerInParent="true"
-                   android:id="@+id/radioGroup">
 
-                   <RadioButton
-                       android:id="@+id/radio_one"
+                   <EditText
+                       android:id="@+id/firstname"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginTop="30dp"
+                       android:background="@drawable/custom_edittext"
+                       android:drawableStart="@drawable/baseline_person_24"
+                       android:drawablePadding="8dp"
+                       android:hint="@string/firest_name"
+                       android:padding="8dp"
+                       android:textColor="@color/black"
+                       android:textColorHighlight="@color/cardview_dark_background" />
+
+                   <EditText
+                       android:id="@+id/lastname"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginTop="20dp"
+                       android:background="@drawable/custom_edittext"
+                       android:drawableStart="@drawable/baseline_person_24"
+                       android:drawablePadding="8dp"
+                       android:hint="@string/last_name"
+                       android:padding="8dp"
+                       android:textColor="@color/black"
+                       android:textColorHighlight="@color/cardview_dark_background" />
+
+
+                   <RadioGroup
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="20dp"
+                       android:background="@drawable/custom_edittext"
+                       android:orientation="horizontal"
+                       android:layout_centerInParent="true"
+                       android:id="@+id/radioGroup">
+
+                       <RadioButton
+                           android:id="@+id/radio_one"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/male1"
+                           android:onClick="checkButton"
+                           android:checked="true"/>
+
+                       <RadioButton
+                           android:id="@+id/radio_two"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/female1"
+                           android:onClick="checkButton"/>
+
+
+
+                   </RadioGroup>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="10dp"
+                       android:padding="10dp"
+                       android:background="@drawable/custom_edittext"
+                       android:orientation="horizontal">
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:textStyle="bold"
+                           android:text="Blood Group"/>
+
+                       <Spinner
+                           android:id="@+id/spinner"
+                           android:layout_width="223dp"
+                           android:layout_height="wrap_content"
+
+
+                           android:gravity="right" />
+                   </LinearLayout>
+
+
+                   <EditText
+                       android:id="@+id/editTextPhone"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginTop="20dp"
+                       android:background="@drawable/custom_edittext"
+                       android:drawableStart="@drawable/baseline_phone_iphone_24"
+                       android:ems="10"
+                       android:hint="@string/_91_84783xxxxx"
+                       android:inputType="phone" />
+
+                   <EditText
+
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginTop="20dp"
+                       android:background="@drawable/custom_edittext"
+                       android:ems="10"
+                       android:inputType="textEmailAddress" />
+
+
+
+                   <Button
+                       android:id="@+id/button"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="@string/male1"
-                       android:onClick="checkButton"
-                       android:checked="true"/>
-
-                   <RadioButton
-                       android:id="@+id/radio_two"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="@string/female1"
-                       android:onClick="checkButton"/>
 
 
-
-               </RadioGroup>
-
-               <Spinner
-                   android:id="@+id/spinner"
-                   android:layout_width="match_parent"
-                   android:layout_marginTop="10dp"
-                   android:layout_height="wrap_content"/>
+                       android:text="Select Due Date" />
 
 
-               <EditText
-                   android:id="@+id/editTextPhone"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:layout_marginTop="20dp"
-                   android:background="@drawable/custom_edittext"
-                   android:drawableStart="@drawable/baseline_phone_iphone_24"
-                   android:ems="10"
-                   android:hint="@string/_91_84783xxxxx"
-                   android:inputType="phone" />
-
-               <EditText
-                   android:id="@+id/editTextTextEmailAddress"
-                   android:layout_width="match_parent"
-                   android:layout_height="50dp"
-                   android:layout_marginTop="20dp"
-                   android:background="@drawable/custom_edittext"
-                   android:ems="10"
-                   android:inputType="textEmailAddress" />
-
-               <Button
-                   android:id="@+id/loginButton"
-                   android:layout_width="match_parent"
-                   android:layout_height="60dp"
-                   android:layout_marginTop="30dp"
-                   android:backgroundTint="@color/purple"
-                   android:text="@string/save"
-                   android:textSize="18sp"
-                   app:cornerRadius="20dp" />
+                   <Button
+                       android:id="@+id/loginButton"
+                       android:layout_width="match_parent"
+                       android:layout_height="60dp"
+                       android:layout_marginTop="30dp"
+                       android:backgroundTint="@color/purple"
+                       android:text="@string/save"
+                       android:textSize="18sp"
+                       app:cornerRadius="20dp" />
 
 
 
 
-           </LinearLayout>
-       </ScrollView>
+               </LinearLayout>
+           </ScrollView>
 
+
+
+       </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
