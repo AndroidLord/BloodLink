@@ -12,6 +12,6 @@ public class PatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient);
     }
     // made a comment
-    // this is my second Text
+    // this is my second Test
     // Third test
 }
