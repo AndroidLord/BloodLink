@@ -13,4 +13,5 @@ public class PatientActivity extends AppCompatActivity {
     }
     // made a comment
     // this is my second Text
+    // Third test
 }
