@@ -27,9 +27,10 @@ import android.widget.Toast;
 import com.example.bloodlink.R;
 import com.example.bloodlink.model.PatientModel;
 import com.example.bloodlink.model.UserModel;
-import com.google.android.gms.common.util.DataUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -43,7 +44,7 @@ import java.util.Date;
 
 public class RequestBloodFragment extends Fragment implements View.OnClickListener {
 
-    private ImageButton button;
+    private ImageButton calenderButton,severityButton;
     private TextView genderTextView;
 
     private EditText firstNameEditText,lastNameEditText,
@@ -59,10 +60,14 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
     private String spinnerText, dueDateStr,patientName;
     private Long dueDateLong,postedOnLong;
     private CalendarView calendarView;
+    Spinner spinner;
 
     private Button savebutton;
 
-    PatientModel patientModel;
+    private PatientModel patientModel;
+
+    private ChipGroup chipGroup;
+    private Chip redChip,blueChip,yellowChip;
 
     // Setting Up Firebase
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -81,35 +86,24 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_request_blood, container, false);
 
-
         // ID's
-        Spinner spinner = view.findViewById(R.id.spinner);
-        genderTextView = view.findViewById(R.id.gender_RequestBlood_TextView);//TextView
-        firstNameEditText = view.findViewById(R.id.firstName_RequestBlood_EditText);
-        lastNameEditText = view.findViewById(R.id.lastname_RequestBlood_EditText);
-        phoneNoEditText = view.findViewById(R.id.phone_bloodRequest);
-        emailEditText = view.findViewById(R.id.email_bloodRequest);
-        addressEditText = view.findViewById(R.id.address_BloodRequest);
-        ageEditText = view.findViewById(R.id.age_BloodRequest);
-        descriptionEditText = view.findViewById(R.id.description_BloodRequest);
-        savebutton = view.findViewById(R.id.saveButton);
+        SettingUpIDS(view);
 
+        //bottomSheet Constructor
         GenderBottomSheetFragment bottomSheetFragment = new GenderBottomSheetFragment();
 
         //Setting Spinner
         SettingUpSpinner(spinner);
 
-        button = view.findViewById(R.id.button);
+        calenderButton = view.findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+        calenderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 select_due_date();
             }
         });
-
-        genderTextView.setText(patientModel.getGender());
-
 
         genderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,12 +115,29 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                 Log.d("blood", "onClick: " + patientModel.getGender());
             }
         });
-
-
         savebutton.setOnClickListener(this);
+        severityButton.setOnClickListener(this);
 
 
         return view;
+    }
+
+    private void SettingUpIDS(View view) {
+        spinner = view.findViewById(R.id.spinner);
+        genderTextView = view.findViewById(R.id.gender_RequestBlood_TextView);//TextView
+        firstNameEditText = view.findViewById(R.id.firstName_RequestBlood_EditText);
+        lastNameEditText = view.findViewById(R.id.lastname_RequestBlood_EditText);
+        phoneNoEditText = view.findViewById(R.id.phone_bloodRequest);
+        emailEditText = view.findViewById(R.id.email_bloodRequest);
+        addressEditText = view.findViewById(R.id.address_BloodRequest);
+        ageEditText = view.findViewById(R.id.age_BloodRequest);
+        descriptionEditText = view.findViewById(R.id.description_BloodRequest);
+        savebutton = view.findViewById(R.id.saveButton);
+        chipGroup = view.findViewById(R.id.chipButtonGroup_RequestBlood);
+        redChip = view.findViewById(R.id.redChip_RequestBlood);
+        blueChip = view.findViewById(R.id.blueChip_RequestBlood);
+        yellowChip = view.findViewById(R.id.yellowChip_RequestBlood);
+        severityButton = view.findViewById(R.id.severity_RequestBlood_ImageButton);
     }
 
     private void select_due_date(){
@@ -150,14 +161,14 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
 
                 Log.d("ee", "onDateSet: " + str);
             }
-        }, 2022, 0, 15);
+        }, 2023, 3, 18);
         dialog.show();
 
 
     }
 
 
-
+    // Drop down List for Blood Group
     private void SettingUpSpinner(Spinner spinner) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Blood_Group, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -186,7 +197,19 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                 SaveDataToFirebase();
                 break;
 
+            case R.id.severity_RequestBlood_ImageButton:
+                SettingUpSeverity();
+                break;
+
         }
+
+    }
+
+    private void SettingUpSeverity() {
+
+        chipGroup.setVisibility(View.VISIBLE);
+
+
 
     }
 
