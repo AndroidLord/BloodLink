@@ -204,7 +204,6 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                 chipGroup.setVisibility(
                         chipGroup.getVisibility()== View.GONE?View.VISIBLE:View.GONE
                 );
-                SettingUpSeverity();
                 break;
 
             case R.id.redChip_RequestBlood:
