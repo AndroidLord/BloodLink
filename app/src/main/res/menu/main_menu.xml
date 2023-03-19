@@ -52,14 +52,14 @@
             <group android:checkableBehavior="single">
 
                 <item
-                    android:id="@+id/nav_termCondition"
+                    android:id="@+id/nav_aboutUs"
                     android:icon="@drawable/termcondition_icon"
-                    android:title="Terms &amp; Condition" />
+                    android:title="About Us" />
 
                 <item
-                    android:id="@+id/nav_aboutUs"
+                    android:id="@+id/nav_termCondition"
                     android:icon="@drawable/aboutus_icon"
-                    android:title="About us" />
+                    android:title="Contact us" />
 
                 <item
                     android:id="@+id/nav_logout"

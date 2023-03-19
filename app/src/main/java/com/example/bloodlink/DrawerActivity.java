@@ -24,7 +24,7 @@ import com.example.bloodlink.fragment.AchievementFragment;
 import com.example.bloodlink.fragment.HomeFragment;
 import com.example.bloodlink.fragment.ProfileFragment;
 import com.example.bloodlink.fragment.RequestBloodFragment;
-import com.example.bloodlink.fragment.TermConditionFragment;
+import com.example.bloodlink.fragment.ContactUsFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -118,7 +118,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.nav_termCondition:
-                loadFragment(new TermConditionFragment());
+                loadFragment(new ContactUsFragment());
                 break;
 
             case R.id.nav_aboutUs:

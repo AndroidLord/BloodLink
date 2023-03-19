@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/contact_form_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="16dp"
+        android:text="Contact Us."
+        android:textColor="#EF0909"
+        android:textColorHint="#FFFFFF"
+        android:textSize="40sp"
+        android:typeface="serif" />
+
+    <EditText
+        android:id="@+id/firstName_RequestBlood_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="name"
+        android:background="@drawable/background_edit_text"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:drawablePadding="8dp"
+        android:hint="Name"
+        android:importantForAutofill="auto"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:textColorHighlight="@color/cardview_dark_background"
+        android:textColorHint="@color/grey"
+        android:textSize="19sp" /> />
+
+    <EditText
+        android:id="@+id/aboutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="name"
+        android:background="@drawable/background_edit_text"
+        android:drawableStart="@drawable/email_icon"
+        android:drawablePadding="8dp"
+        android:hint="@string/email3"
+        android:importantForAutofill="auto"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:textColorHighlight="@color/cardview_dark_background"
+        android:textColorHint="@color/grey"
+        android:textSize="19sp" />
+
+    <EditText
+        android:id="@+id/phoneNumb"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints="name"
+        android:background="@drawable/background_edit_text"
+        android:drawableStart="@drawable/baseline_phone_iphone_24"
+        android:drawablePadding="8dp"
+        android:hint="@string/phone_number"
+        android:importantForAutofill="auto"
+        android:inputType="phone"
+        android:padding="12dp"
+        android:singleLine="true"
+        android:textColorHighlight="@color/cardview_dark_background"
+        android:textColorHint="@color/grey"
+        android:textSize="19sp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:breakStrategy="balanced"
+        android:fitsSystemWindows="true"
+        android:gravity="top"
+        android:hint="@string/your_message"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:singleLine="false"
+        android:textColorHint="@color/grey" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/red"
+        android:backgroundTint="#F80025"
+        android:elevation="4dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="@string/submit"
+        android:textColor="#fff" />
+</LinearLayout>
