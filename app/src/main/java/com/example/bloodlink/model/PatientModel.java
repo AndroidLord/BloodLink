@@ -160,4 +160,6 @@ public class PatientModel {
     public void setUserImage(String userImage) {
         this.userImage = userImage;
     }
+
+
 }

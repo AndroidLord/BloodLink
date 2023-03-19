@@ -1,270 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity">
-
+    android:orientation="vertical"
+    tools:context=".DrawerActivity">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:background="@drawable/custom_edittext"
         app:cardCornerRadius="20dp"
-        app:cardElevation="20dp"
-        android:background="@drawable/custom_edittext">
-
+        app:cardElevation="20dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:weightSum="1"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/titleTextView_login"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/request_for_blood"
-                android:textAlignment="center"
-                android:textColor="@color/red"
-                android:textSize="36sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleTextView_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/request_for_blood"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="25dp">
+
+
+                    <EditText
+                        android:id="@+id/firstName_RequestBlood_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="name"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/baseline_person_24"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/firest_name"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/lastname_RequestBlood_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:autofillHints="name"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/baseline_person_24"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/last_name"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <TextView
+                        android:id="@+id/gender_RequestBlood_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/background_edit_text"
+                        android:hint="Gender"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/background_edit_text"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/blood_group"
+                            android:textSize="19sp" />
+
+                        <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="223dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="right" />
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="phone"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/baseline_phone_iphone_24"
+                        android:drawablePadding="8dp"
+                        android:hint="+91 831846xxxx"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <EditText
+
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="phone"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/email_icon"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/email"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="phone"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/home_icon"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/address"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="phone"
+                        android:background="@drawable/background_edit_text"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/age"
+                        android:importantForAutofill="auto"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:autofillHints="phone"
+                        android:background="@drawable/background_edit_text"
+                        android:drawableStart="@drawable/baseline_description_24"
+                        android:drawablePadding="8dp"
+                        android:hint="@string/description"
+                        android:importantForAutofill="auto"
+                        android:inputType="textLongMessage"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:background="@drawable/custom_edittext"
+                            android:padding="10dp"
+                            android:src="@drawable/calendar_icon"
+                            app:tint="@color/red" />
+
+                        <ImageButton
+                            android:id="@+id/severity_RequestBlood_ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+
+                            android:background="@drawable/custom_edittext"
+                            android:padding="8dp"
+                            android:src="@drawable/flag_icon"
+                            app:tint="@color/red" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/red"
+                            android:hint="@string/urgent_emergency"
+                            android:textColor="#FBFBFB"
+                            android:textColorHint="#FFFFFF"
+                            android:textSize="16sp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/red"
+                            android:hint="@string/routine_non_urgent"
+
+                            android:textColorHint="#FFFCFC"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/red"
+                            android:hint="@string/stock_replacement"
+                            android:textColorHint="#FDFCFC"
+                            android:textSize="16sp" />
+                    </com.google.android.material.chip.ChipGroup>
+
+
+                    <Button
+                        android:id="@+id/loginButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="30dp"
+                        android:backgroundTint="@color/red"
+                        android:text="@string/save"
+                        android:textSize="18sp"
+                        app:cornerRadius="20dp" />
+
+
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
-           <ScrollView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_gravity="center_horizontal"
-                   android:orientation="vertical"
-                   android:padding="25dp">
-
-
-
-                   <EditText
-                       android:id="@+id/firstname"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="30dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/baseline_person_24"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/firest_name"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background" />
-
-                   <EditText
-                       android:id="@+id/lastname"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/baseline_person_24"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/last_name"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background" />
-
-
-                   <RadioGroup
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:orientation="horizontal"
-                       android:layout_centerInParent="true"
-                       android:id="@+id/radioGroup">
-
-                       <RadioButton
-                           android:id="@+id/radio_one"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/male1"
-                           android:onClick="checkButton"
-                           android:checked="true"/>
-
-                       <RadioButton
-                           android:id="@+id/radio_two"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="@string/female1"
-                           android:onClick="checkButton"/>
-
-
-
-                   </RadioGroup>
-
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="10dp"
-                       android:padding="10dp"
-                       android:background="@drawable/custom_edittext"
-                       android:orientation="horizontal">
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:textStyle="bold"
-                           android:drawableStart="@drawable/blood_icon"
-                           android:text="@string/blood_group"
-
-                           />
-
-                       <Spinner
-                           android:id="@+id/spinner"
-                           android:layout_width="223dp"
-                           android:layout_height="wrap_content"
-                           android:gravity="right" />
-                   </LinearLayout>
-
-
-                   <EditText
-                       android:id="@+id/phone"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/baseline_phone_iphone_24"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/_91"
-                       android:inputType="phone"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background"/>
-                   <EditText
-
-                       android:id="@+id/email"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/email_icon"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/email2"
-                       android:inputType="textEmailAddress"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background" />
-
-
-                   <Button
-                       android:id="@+id/button"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="20dp"
-                       android:backgroundTint="@color/red"
-                       android:padding="10dp"
-                       android:text="@string/select_due_date" />
-
-                   <EditText
-                       android:id="@+id/address"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/home_icon"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/address"
-                       android:inputType="textPostalAddress"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background"/>
-                   <EditText
-                       android:id="@+id/age"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/age"
-                       android:inputType="textPostalAddress"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background"/>
-
-                   <EditText
-                       android:id="@+id/description"
-                       android:layout_width="match_parent"
-                       android:layout_height="50dp"
-                       android:layout_marginTop="20dp"
-                       android:background="@drawable/custom_edittext"
-                       android:drawableStart="@drawable/baseline_description_24"
-                       android:drawablePadding="8dp"
-                       android:hint="@string/description"
-                       android:inputType="textLongMessage"
-                       android:padding="8dp"
-                       android:textColor="@color/black"
-                       android:textColorHighlight="@color/cardview_dark_background"/>
-                   <com.google.android.material.chip.ChipGroup
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content">
-
-                   <com.google.android.material.chip.Chip
-                       android:layout_width="200dp"
-                       android:layout_height="wrap_content"
-                       android:backgroundTint="@color/red"
-                       android:hint="@string/urgent_emergency"
-                       android:textColor="#FBFBFB"
-                       android:textColorHint="#FFFFFF"
-                       android:textSize="16sp" />
-
-                   <com.google.android.material.chip.Chip
-                       android:layout_width="200dp"
-                       android:layout_height="wrap_content"
-                       android:backgroundTint="@color/red"
-                       android:hint="@string/routine_non_urgent"
-
-                       android:textColorHint="#FFFCFC"
-                       android:textSize="16sp"
-                       android:textStyle="bold" />
-
-                   <com.google.android.material.chip.Chip
-                       android:layout_width="200dp"
-                       android:layout_height="wrap_content"
-                       android:backgroundTint="@color/red"
-                       android:hint="@string/stock_replacement"
-                       android:textColorHint="#FDFCFC"
-                       android:textSize="16sp" />
-                   </com.google.android.material.chip.ChipGroup>
-
-
-
-                   <Button
-                       android:id="@+id/loginButton"
-                       android:layout_width="match_parent"
-                       android:layout_height="60dp"
-                       android:layout_marginTop="30dp"
-                       android:backgroundTint="@color/purple"
-                       android:text="@string/save"
-                       android:textSize="18sp"
-                       app:cornerRadius="20dp" />
-
-
-
-
-               </LinearLayout>
-           </ScrollView>
-
-
-
-       </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+
+</RelativeLayout>
