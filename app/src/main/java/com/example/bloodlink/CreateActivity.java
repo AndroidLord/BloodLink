@@ -46,7 +46,6 @@ public class CreateActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
 
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
 
     private final FirebaseFirestore db=FirebaseFirestore.getInstance();
     private final CollectionReference userCollection = db.collection("UserCollections");

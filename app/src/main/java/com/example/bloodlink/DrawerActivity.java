@@ -3,6 +3,7 @@ package com.example.bloodlink;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -40,11 +41,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     // Setting up Firebase
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser currentUser;
-
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference collectionReference = db.collection("PatientCollection");
 
 
     @Override
@@ -57,25 +54,12 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
         toolbar = findViewById(R.id.toolbar);
         fragmentContainer = findViewById(R.id.fragment_container);
 
-        setSupportActionBar(toolbar);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
         //Initiating Firestore
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
 
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(currentUser!=null){
 
-                }
-                else{
-
-                }
-            }
-        };
-
+        setSupportActionBar(toolbar);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -134,8 +118,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
         }
         item.setChecked(true);
-        if(item.getItemId()!=R.id.nav_logout)
-        setTitle(item.getTitle());
+
+        if(item.getItemId() != R.id.nav_logout)
+            setTitle(item.getTitle());
 
         drawerLayout.closeDrawer(GravityCompat.START);
 

@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
     // Setting Up Firebase
     private FirebaseUser currentUser;
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReference = db.collection("UserCollections");
 

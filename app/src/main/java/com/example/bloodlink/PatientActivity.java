@@ -11,7 +11,5 @@ public class PatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
     }
-    // made a comment
-    // this is my second Test
-    // 8 test
+
 }

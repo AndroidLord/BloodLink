@@ -3,17 +3,30 @@ package com.example.bloodlink.fragment;
 import android.graphics.PathEffect;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.bloodlink.R;
 import com.example.bloodlink.adaptors.PatientRecyclerAdaptor;
 import com.example.bloodlink.model.PatientModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +37,9 @@ public class HomeFragment extends Fragment {
     private PatientRecyclerAdaptor patientRecyclerAdaptor;
 
     private List<PatientModel> patientModelList;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference collectionReference = db.collection("PatientRequestCollection");
 
     public HomeFragment() {
         // Required empty public constructor
@@ -40,27 +56,61 @@ public class HomeFragment extends Fragment {
         // ID's
         recyclerView = view.findViewById(R.id.recyclerView_main);
 
-        // Initiating List
+         // Initiating List
         patientModelList = new ArrayList<>();
+//        patientModelList2 = new ArrayList<>();
+//
+//        PatientModel patientModel = new PatientModel();
+//        patientModel.setPatientName("Vineet");
+//        patientModel.setAddress("Sahara Hospital");
+//        patientModel.setPostedOn(System.currentTimeMillis());
+//        patientModel.setDueDate(System.currentTimeMillis());
+//        patientModel.setDescription("Description: My brother had an accident late night and is urgent need of blood. Please Help! \uD83D\uDE4F\uD83D\uDE4F");
 
-        PatientModel patientModel = new PatientModel();
-        patientModel.setPatientName("Vineet");
-        patientModel.setAddress("Sahara Hospital");
-        patientModel.setPostedOn("Posted on: 05:45, 14/03/23");
-        patientModel.setDueDate("Tomorrow");
-        patientModel.setDescription("Description: My brother had an accident late night and is urgent need of blood. Please Help! \uD83D\uDE4F\uD83D\uDE4F");
-
-        for (int i=0;i<10;i++){
-            patientModelList.add(patientModel);
-        }
+//        for (int i=0;i<10;i++){
+//            patientModelList.add(patientModel);
+//        }
 
         // Setting Recycler View
-        patientRecyclerAdaptor = new PatientRecyclerAdaptor(getContext(),patientModelList);
-        recyclerView.setAdapter(patientRecyclerAdaptor);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+       return view;
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
-        return view;
+        Log.d("home", "onStart: Going to Retrieve Data");
+
+        collectionReference
+                .whereGreaterThanOrEqualTo("dueDate",System.currentTimeMillis())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if(error!=null){
+                            Toast.makeText(getContext(), "Error Getting List", Toast.LENGTH_SHORT).show();
+                            Log.d("home", "onEvent: error: "+error);
+                        }
+                        if(value!=null && !value.isEmpty()){
+
+                            for(QueryDocumentSnapshot documentSnapshot: value){
+                                PatientModel patientModel = documentSnapshot.toObject(PatientModel.class);
+                                patientModelList.add(patientModel);
+                                Log.d("home", "onEvent: List of Request: " + patientModel.getDueDate());
+                            }
+
+                            patientRecyclerAdaptor = new PatientRecyclerAdaptor(getContext(),patientModelList);
+                            recyclerView.setAdapter(patientRecyclerAdaptor);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                            patientRecyclerAdaptor.notifyDataSetChanged();
+                        }
+                        else{
+                            Toast.makeText(getContext(), "There is no Data", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
     }
 }

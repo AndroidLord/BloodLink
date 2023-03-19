@@ -1,9 +1,11 @@
 package com.example.bloodlink.adaptors;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bloodlink.R;
 import com.example.bloodlink.model.PatientModel;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecyclerAdaptor.ViewHolder> {
 
     private Context context;
     private List<PatientModel> patientModelList;
+
+    public PatientRecyclerAdaptor() {
+    }
 
     public PatientRecyclerAdaptor(Context context, List<PatientModel> patientModelList) {
         this.context = context;
@@ -40,8 +49,16 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
         PatientModel patientModel = patientModelList.get(position);
 
         holder.locationTextView.setText(patientModel.getAddress());
-        holder.postedOnTextView.setText(patientModel.getPostedOn());
-        holder.dueDateTextView.setText(patientModel.getDueDate());
+
+        Calendar calendar = Calendar.getInstance();
+        DateFormat obj = new SimpleDateFormat("d MMMM yyyy, hh:mma");
+        // we create instance of the Date and pass milliseconds to the constructor
+        Date res = new Date(patientModel.getPostedOn());
+        holder.postedOnTextView.setText(obj.format(res));
+
+        String DueDateStr = new PatientRecyclerAdaptor().formatDate(new Date(patientModel.getDueDate()));
+
+        holder.dueDateTextView.setText(DueDateStr);
         holder.authorTextView.setText(patientModel.getPatientName());
         holder.descriptionTextView.setText(patientModel.getDescription());
 
@@ -76,5 +93,25 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
 
 
         }
+    }
+
+    public String formatDate(Date dueDate) {
+        long dueTime = dueDate.getTime();
+        long now = System.currentTimeMillis();
+        long timeDifference = dueTime - now;
+
+        // Check if due date is in the future
+        if (timeDifference > 0) {
+            // Check if due date is tomorrow
+            if (timeDifference < DateUtils.DAY_IN_MILLIS) {
+                return "Tomorrow";
+            }
+            // Check if due date is within the next 7 days
+            if (timeDifference < (DateUtils.WEEK_IN_MILLIS - DateUtils.DAY_IN_MILLIS)) {
+                return DateUtils.getRelativeTimeSpanString(dueTime, now, DateUtils.DAY_IN_MILLIS, DateUtils.FORMAT_SHOW_WEEKDAY).toString();
+            }
+        }
+        // If due date is in the past or more than 7 days in the future, show the date
+        return DateUtils.formatDateTime(context, dueTime, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME);
     }
 }

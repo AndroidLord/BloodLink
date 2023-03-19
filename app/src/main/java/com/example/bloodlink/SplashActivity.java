@@ -60,7 +60,7 @@ public class SplashActivity extends AppCompatActivity {
                                 userModel.setEmailId(email);
                                 userModel.setUserId(name);
 
-                                Toast.makeText(SplashActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(SplashActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SplashActivity.this,DrawerActivity.class));
                                 finish();
                             }
