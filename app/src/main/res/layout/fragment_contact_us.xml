@@ -45,7 +45,7 @@
         android:background="@drawable/background_edit_text"
         android:drawableStart="@drawable/email_icon"
         android:drawablePadding="8dp"
-        android:hint="@string/email3"
+        android:hint="@string/emailfive"
         android:importantForAutofill="auto"
         android:inputType="textEmailAddress"
         android:padding="12dp"
@@ -63,7 +63,7 @@
         android:background="@drawable/background_edit_text"
         android:drawableStart="@drawable/baseline_phone_iphone_24"
         android:drawablePadding="8dp"
-        android:hint="@string/phone_number"
+        android:hint="@string/phonenum"
         android:importantForAutofill="auto"
         android:inputType="phone"
         android:padding="12dp"
@@ -81,21 +81,22 @@
         android:breakStrategy="balanced"
         android:fitsSystemWindows="true"
         android:gravity="top"
-        android:hint="@string/your_message"
+        android:hint="@string/your_message1"
         android:inputType="textMultiLine"
         android:padding="5dp"
         android:singleLine="false"
         android:textColorHint="@color/grey" />
 
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/red"
-        android:backgroundTint="#F80025"
+        android:background="#E91E63"
         android:elevation="4dp"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
-        android:text="@string/submit"
+        android:text="@string/submits"
         android:textColor="#fff" />
 </LinearLayout>
