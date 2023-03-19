@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/genderBottomSheet"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Animation.Design.BottomSheetDialog"
+    app:layout_behavior="Com.google.android.material.bottomsheet.BottomSheetBehaviour"
+    tools:context=".fragment.GenderBottomSheetFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/genderTitle_bottomSheetFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:text="Gender" />
+
+        <Button
+            android:id="@+id/maleGender_BottomSheetFragment"
+            android:text="Male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textColor="@color/grey"
+            android:textStyle="normal"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:background="@android:color/transparent"/>
+
+
+        <Button
+            android:id="@+id/femaleGender_BottomSheetFragment"
+            android:text="Female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textStyle="normal"
+            android:textColor="@color/grey"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/preferNotToSayGender_BottomSheetFragment"
+            android:text="Prefer Not To Say"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:textStyle="normal"
+            android:textColor="@color/grey"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>

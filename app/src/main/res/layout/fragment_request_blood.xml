@@ -18,7 +18,7 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp">
 
-        <LinearLayout
+         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -51,7 +51,6 @@
                     android:orientation="vertical"
                     android:padding="25dp">
 
-
                     <EditText
                         android:id="@+id/firstName_RequestBlood_EditText"
                         android:layout_width="match_parent"
@@ -67,6 +66,7 @@
                         android:singleLine="true"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
+
 
                     <EditText
                         android:id="@+id/lastname_RequestBlood_EditText"
@@ -121,7 +121,7 @@
 
 
                     <EditText
-                        android:id="@+id/phone"
+                        android:id="@+id/phone_bloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -138,7 +138,7 @@
 
                     <EditText
 
-                        android:id="@+id/email"
+                        android:id="@+id/email_bloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -154,7 +154,7 @@
                         android:textSize="19sp" />
 
                     <EditText
-                        android:id="@+id/address"
+                        android:id="@+id/address_BloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -170,7 +170,7 @@
                         android:textSize="19sp" />
 
                     <EditText
-                        android:id="@+id/age"
+                        android:id="@+id/age_BloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -185,7 +185,7 @@
                         android:textSize="19sp" />
 
                     <EditText
-                        android:id="@+id/description"
+                        android:id="@+id/description_BloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -201,33 +201,39 @@
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_height="wrap_content">
-                        <ImageButton
-                            android:id="@+id/button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:gravity="center"
+                      android:layout_marginTop="10dp"
+                      android:layout_height="wrap_content">
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/tempary_date"
+                          android:text="data"/>
 
-                            android:background="@drawable/custom_edittext"
-                            android:padding="10dp"
-                            android:src="@drawable/calendar_icon"
-                            app:tint="@color/red" />
+                      <ImageButton
+                          android:id="@+id/button"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
 
-                        <ImageButton
-                            android:id="@+id/severity_RequestBlood_ImageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
+                          android:background="@drawable/custom_edittext"
+                          android:padding="10dp"
+                          android:src="@drawable/calendar_icon"
+                          app:tint="@color/red" />
 
-                            android:background="@drawable/custom_edittext"
-                            android:padding="8dp"
-                            android:src="@drawable/flag_icon"
-                            app:tint="@color/red" />
+                      <ImageButton
+                          android:id="@+id/severity_RequestBlood_ImageButton"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="20dp"
 
-                    </LinearLayout>
+                          android:background="@drawable/custom_edittext"
+                          android:padding="8dp"
+                          android:src="@drawable/flag_icon"
+                          app:tint="@color/red" />
+
+                  </LinearLayout>
 
                     <com.google.android.material.chip.ChipGroup
                         android:layout_width="wrap_content"
@@ -264,7 +270,7 @@
 
 
                     <Button
-                        android:id="@+id/loginButton"
+                        android:id="@+id/saveButton"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
@@ -277,6 +283,7 @@
                 </LinearLayout>
             </ScrollView>
 
+             <include layout="@layout/fragment_gender_bottom_sheet" />
         </LinearLayout>
 
 

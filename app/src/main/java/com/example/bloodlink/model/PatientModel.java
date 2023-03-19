@@ -5,6 +5,17 @@ import android.widget.TextView;
 
 public class PatientModel {
 
+    private static PatientModel instance;
+
+    private PatientModel() {
+
+    }
+    public static PatientModel getInstance(){
+        if (instance==null){
+            instance = new PatientModel();
+        }
+        return instance;
+    }
 
     private String patientName,
     gender,
@@ -16,30 +27,11 @@ public class PatientModel {
     description,
     age,
     relationToPatient,
-    patientImage;
+    patientImage,
+            userName,userImage;
 
-    private String dueDate,PostedOn,userName,userImage;
+    private long dueDate,PostedOn;
 
-    public PatientModel() {
-    }
-
-    public PatientModel(String patientName, String gender, String severity, String email, String phoneNo, String bloodGroup, String address, String description, String age, String relationToPatient, String patientImage, String dueDate, String postedOn, String userName, String userImage) {
-        this.patientName = patientName;
-        this.gender = gender;
-        this.severity = severity;
-        this.email = email;
-        this.phoneNo = phoneNo;
-        this.bloodGroup = bloodGroup;
-        this.address = address;
-        this.description = description;
-        this.age = age;
-        this.relationToPatient = relationToPatient;
-        this.patientImage = patientImage;
-        this.dueDate = dueDate;
-        PostedOn = postedOn;
-        this.userName = userName;
-        this.userImage = userImage;
-    }
 
     public String getPatientName() {
         return patientName;
@@ -129,22 +121,6 @@ public class PatientModel {
         this.patientImage = patientImage;
     }
 
-    public String getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public String getPostedOn() {
-        return PostedOn;
-    }
-
-    public void setPostedOn(String postedOn) {
-        PostedOn = postedOn;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -161,5 +137,21 @@ public class PatientModel {
         this.userImage = userImage;
     }
 
+    public long getDueDate() {
+        return dueDate;
+    }
 
+    public void setDueDate(long dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public long getPostedOn() {
+        return PostedOn;
+    }
+
+    public void setPostedOn(long postedOn) {
+        PostedOn = postedOn;
+    }
 }
+
+

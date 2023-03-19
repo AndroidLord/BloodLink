@@ -1,6 +1,5 @@
 package com.example.bloodlink.fragment;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -60,8 +57,6 @@ public class RequestBloodFragment extends Fragment  {
     private Long dueDate,postedOn;
     private CalendarView calendarView;
 
-    private Button button;
-
     // Setting Up Firebase
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference patientRequestCollection = db.collection("PatientRequestCollection");
@@ -80,14 +75,8 @@ public class RequestBloodFragment extends Fragment  {
         //Setting Spinner
         SettingUpSpinner(spinner);
 
-        button = view.findViewById(R.id.button);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                select_due_date();
-            }
-        });
+        // Setting Calendar
+        SettingUpCalendar();
 
         try {
             addingDataToFirebase();
@@ -98,18 +87,13 @@ public class RequestBloodFragment extends Fragment  {
         return view;
     }
 
-    private void select_due_date(){
-
-        DatePickerDialog dialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                String str = dayOfMonth+"/"+(month+1)+"/"+year;
-                button.setText("Date: "+str);
-            }
-        }, 2022, 0, 15);
-        dialog.show();
-
+    private void SettingUpCalendar() {
+//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+//            @Override
+//            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+//                dueDateStr = dayOfMonth+"/"+(month+1)+"/"+year;
+//            }
+//        });
     }
 
     private void addingDataToFirebase() throws ParseException {
