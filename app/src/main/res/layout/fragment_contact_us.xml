@@ -77,7 +77,7 @@
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/grey"
         android:breakStrategy="balanced"
         android:fitsSystemWindows="true"
         android:gravity="top"

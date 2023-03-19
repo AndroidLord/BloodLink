@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -117,7 +118,9 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         });
         savebutton.setOnClickListener(this);
         severityButton.setOnClickListener(this);
-
+        redChip.setOnClickListener(this);
+        blueChip.setOnClickListener(this);
+        yellowChip.setOnClickListener(this);
 
         return view;
     }
@@ -194,11 +197,33 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         switch(v.getId()){
 
             case R.id.saveButton:
-                SaveDataToFirebase();
+                saveData();
                 break;
 
             case R.id.severity_RequestBlood_ImageButton:
+                chipGroup.setVisibility(
+                        chipGroup.getVisibility()== View.GONE?View.VISIBLE:View.GONE
+                );
                 SettingUpSeverity();
+                break;
+
+            case R.id.redChip_RequestBlood:
+                redChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_checked_24));
+                blueChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                yellowChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                patientModel.setSeverity("High");
+                break;
+            case R.id.blueChip_RequestBlood:
+                blueChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_checked_24));
+                redChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                yellowChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                patientModel.setSeverity("Medium");
+                break;
+            case R.id.yellowChip_RequestBlood:
+                yellowChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_checked_24));
+                blueChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                redChip.setChipIcon(ContextCompat.getDrawable(getContext(), R.drawable.baseline_radio_button_unchecked_24));
+                patientModel.setSeverity("Low");
                 break;
 
         }
@@ -213,7 +238,7 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
 
     }
 
-    private void SaveDataToFirebase() {
+    private void saveData() {
 
         String firstName = firstNameEditText.getText().toString().trim();
         String lastName = lastNameEditText.getText().toString().trim();
@@ -226,6 +251,7 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         String address = addressEditText.getText().toString().trim();
         String age = ageEditText.getText().toString().trim();
         String description = descriptionEditText.getText().toString().trim();
+        String severity = patientModel.getSeverity();
 
         if(!TextUtils.isEmpty(patientName) &&
                 !TextUtils.isEmpty(gender) &&
@@ -234,7 +260,8 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                 !TextUtils.isEmpty(bloodGroup) &&
                 !TextUtils.isEmpty(age) &&
                 !TextUtils.isEmpty(description) &&
-                !TextUtils.isEmpty(address)
+                !TextUtils.isEmpty(address) &&
+                !TextUtils.isEmpty(severity)
         ){
 
             try {
@@ -246,7 +273,8 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                         description,
                         address,
                         email,
-                        patientModel.getDueDate());
+                        patientModel.getDueDate(),
+                        severity);
 
             } catch (ParseException e) {
                 throw new RuntimeException(e);
@@ -266,13 +294,14 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                                       String description,
                                       String address,
                                       String email,
-                                      long dueDate) throws ParseException {
+                                      long dueDate,
+                                      String severity) throws ParseException {
 
         UserModel userModel = UserModel.getInstance();
 
         patientModel.setPatientName(patientName);
         patientModel.setGender(gender);
-        patientModel.setSeverity("Not that Severe");
+        patientModel.setSeverity(severity);
         patientModel.setEmail(email);
         patientModel.setPhoneNo(phoneNo);
         patientModel.setBloodGroup(bloodGroup);
@@ -280,7 +309,6 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         patientModel.setDescription(description);
         patientModel.setAge(age);
         patientModel.setRelationToPatient("Friend");
-        long due = System.currentTimeMillis() + DateUtils.DAY_IN_MILLIS;
         patientModel.setDueDate(dueDate);
         patientModel.setPostedOn(System.currentTimeMillis());
         patientModel.setUserName(userModel.getUserName());

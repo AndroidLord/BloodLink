@@ -89,22 +89,30 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
+                        android:padding="12dp"
                         android:background="@drawable/background_edit_text"
                         android:hint="Gender"
-                        android:importantForAutofill="auto"
-                        android:padding="12dp"
-                        android:singleLine="true"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
+                    <TextView
+                        android:id="@+id/relationToPatient_RequestBlood_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/background_edit_text"
+                        android:hint="Relation To Patient"
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:textSize="19sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:background="@drawable/background_edit_text"
                         android:orientation="horizontal"
-                        android:padding="10dp">
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -124,15 +132,15 @@
                         android:id="@+id/phone_bloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp"
                         android:autofillHints="phone"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/baseline_phone_iphone_24"
                         android:drawablePadding="8dp"
                         android:hint="+91 831846xxxx"
+                        android:inputType="phone"
                         android:importantForAutofill="auto"
-                        android:padding="12dp"
-                        android:singleLine="true"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
@@ -140,71 +148,68 @@
 
                         android:id="@+id/email_bloodRequest"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="50dp"
                         android:autofillHints="phone"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/email_icon"
                         android:drawablePadding="8dp"
                         android:hint="@string/email"
                         android:importantForAutofill="auto"
+                        android:layout_marginTop="20dp"
                         android:padding="12dp"
+                        android:inputType="textEmailAddress"
                         android:singleLine="true"
-                        android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
                     <EditText
                         android:id="@+id/address_BloodRequest"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp"
                         android:autofillHints="phone"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/home_icon"
                         android:drawablePadding="8dp"
                         android:hint="@string/address"
                         android:importantForAutofill="auto"
-                        android:padding="12dp"
                         android:singleLine="true"
-                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:inputType="textMultiLine"
                         android:textSize="19sp" />
 
                     <EditText
                         android:id="@+id/age_BloodRequest"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp"
                         android:autofillHints="phone"
                         android:background="@drawable/background_edit_text"
                         android:drawablePadding="8dp"
                         android:hint="@string/age"
                         android:importantForAutofill="auto"
-                        android:padding="12dp"
                         android:singleLine="true"
-                        android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
                     <EditText
                         android:id="@+id/description_BloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:autofillHints="phone"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/baseline_description_24"
                         android:drawablePadding="8dp"
                         android:hint="@string/description"
                         android:importantForAutofill="auto"
                         android:inputType="textLongMessage"
+                        android:layout_marginTop="20dp"
                         android:padding="12dp"
-                        android:singleLine="true"
-                        android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
                   <LinearLayout
                       android:layout_width="match_parent"
                       android:gravity="center"
-                      android:layout_marginTop="10dp"
+                      android:layout_marginTop="20dp"
+                      android:padding="12dp"
                       android:layout_height="wrap_content">
 
 
@@ -212,7 +217,6 @@
                           android:id="@+id/button"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-
                           android:background="@drawable/custom_edittext"
                           android:padding="10dp"
                           android:src="@drawable/calendar_icon"
@@ -224,19 +228,19 @@
                           android:layout_height="wrap_content"
                           android:layout_marginStart="20dp"
                           android:background="@drawable/custom_edittext"
-                          android:padding="8dp"
+                          android:padding="10dp"
                           android:src="@drawable/flag_icon"
                           app:tint="@color/red" />
 
                   </LinearLayout>
 
                     <com.google.android.material.chip.ChipGroup
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/chipButtonGroup_RequestBlood"
                         android:layout_marginTop="10dp"
                         android:layout_gravity="center"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -245,36 +249,36 @@
                             <com.google.android.material.chip.Chip
                                 android:layout_width="90dp"
                                 android:layout_height="wrap_content"
-                                android:textAlignment="center"
+                                android:textAlignment="textStart"
+                                app:chipIcon="@drawable/baseline_radio_button_unchecked_24"
+                                app:chipBackgroundColor="@color/red"
                                 android:id="@+id/redChip_RequestBlood"
-                                android:backgroundTint="@color/red"
                                 android:text="High"
-                                android:layout_marginEnd="5dp"
                                 android:textColor="#FBFBFB"
-                                android:textColorHint="#FFFFFF"
                                 android:textSize="16sp" />
 
                             <com.google.android.material.chip.Chip
-                                android:layout_width="90dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textAlignment="center"
+                                android:textAlignment="textStart"
+                                app:chipIcon="@drawable/baseline_radio_button_unchecked_24"
+                                app:chipBackgroundColor="@color/blue"
                                 android:id="@+id/blueChip_RequestBlood"
-                                android:backgroundTint="@color/blue"
                                 android:text="Medium"
-                                android:textColorHint="#FFFCFC"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:textColor="#FBFBFB"
+                                android:textSize="16sp" />
 
                             <com.google.android.material.chip.Chip
-                                android:layout_width="90dp"
-                                android:layout_height="wrap_content"
-                                android:textAlignment="center"
-                                android:layout_marginStart="5dp"
-                                android:id="@+id/yellowChip_RequestBlood"
-                                android:backgroundTint="@color/yellow"
-                                android:text="Low"
-                                android:textColorHint="#FDFCFC"
-                                android:textSize="16sp" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
+                                android:layout_weight="1"
+                            app:chipIcon="@drawable/baseline_radio_button_unchecked_24"
+                            app:chipBackgroundColor="@color/yellow"
+                            android:id="@+id/yellowChip_RequestBlood"
+                            android:text="Low"
+                            android:textColor="#FBFBFB"
+                            android:textSize="16sp" />
                         </LinearLayout>
                     </com.google.android.material.chip.ChipGroup>
 
