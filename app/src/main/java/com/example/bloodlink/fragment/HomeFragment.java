@@ -58,20 +58,6 @@ public class HomeFragment extends Fragment {
 
          // Initiating List
         patientModelList = new ArrayList<>();
-//        patientModelList2 = new ArrayList<>();
-//
-//        PatientModel patientModel = new PatientModel();
-//        patientModel.setPatientName("Vineet");
-//        patientModel.setAddress("Sahara Hospital");
-//        patientModel.setPostedOn(System.currentTimeMillis());
-//        patientModel.setDueDate(System.currentTimeMillis());
-//        patientModel.setDescription("Description: My brother had an accident late night and is urgent need of blood. Please Help! \uD83D\uDE4F\uD83D\uDE4F");
-
-//        for (int i=0;i<10;i++){
-//            patientModelList.add(patientModel);
-//        }
-
-        // Setting Recycler View
 
        return view;
     }
@@ -93,7 +79,7 @@ public class HomeFragment extends Fragment {
                             Log.d("home", "onEvent: error: "+error);
                         }
                         if(value!=null && !value.isEmpty()){
-
+                            patientModelList.clear();
                             for(QueryDocumentSnapshot documentSnapshot: value){
                                 PatientModel patientModel = documentSnapshot.toObject(PatientModel.class);
                                 patientModelList.add(patientModel);
