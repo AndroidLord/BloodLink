@@ -155,7 +155,7 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
 
     }
 
-    private void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment) {
 
 
         FragmentManager manager = getSupportFragmentManager();

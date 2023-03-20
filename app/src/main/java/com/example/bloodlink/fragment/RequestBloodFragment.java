@@ -1,12 +1,15 @@
 package com.example.bloodlink.fragment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -21,6 +24,8 @@ import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +66,7 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
     private String spinnerText, dueDateStr,patientName;
     private Long dueDateLong,postedOnLong;
     private CalendarView calendarView;
+    private LinearLayout linearLayout;
     Spinner spinner;
 
     private Button savebutton;
@@ -69,6 +75,7 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
 
     private ChipGroup chipGroup;
     private Chip redChip,blueChip,yellowChip;
+    private ProgressBar progressBar;
 
     // Setting Up Firebase
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -141,6 +148,8 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         blueChip = view.findViewById(R.id.blueChip_RequestBlood);
         yellowChip = view.findViewById(R.id.yellowChip_RequestBlood);
         severityButton = view.findViewById(R.id.severity_RequestBlood_ImageButton);
+        linearLayout = view.findViewById(R.id.linearLayout_RequestBlood);
+        progressBar = view.findViewById(R.id.progressBar_RequestBlood);
     }
 
     private void select_due_date(){
@@ -296,6 +305,9 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
                                       long dueDate,
                                       String severity) throws ParseException {
 
+        linearLayout.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
         UserModel userModel = UserModel.getInstance();
 
         patientModel.setPatientName(patientName);
@@ -326,9 +338,25 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
 
                             if(error!=null){
                                 Toast.makeText(getContext(), "Data is Null", Toast.LENGTH_SHORT).show();
+                                return;
                             }
-                            if(value!=null && !value.exists()){
+                            if(value!=null && value.exists()){
+
                                 Toast.makeText(getContext(), "Request Successful", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                linearLayout.setVisibility(View.VISIBLE);
+
+
+
+                                FragmentManager manager = getParentFragmentManager();
+                                FragmentTransaction transaction = manager.beginTransaction();
+
+
+                                transaction.replace(R.id.fragment_container, new HomeFragment());
+                                //transaction.add(R.id.fragment_container,fragment);
+                                transaction.commit();
+
+
                             }
 
                         }
@@ -336,6 +364,8 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
 
                 }
                 else{
+                    progressBar.setVisibility(View.GONE);
+                    linearLayout.setVisibility(View.VISIBLE);
                     Toast.makeText(getContext(), "Request Failed", Toast.LENGTH_SHORT).show();
                     Log.d("requestblood", "onComplete: Failure of Task: ");
                 }
