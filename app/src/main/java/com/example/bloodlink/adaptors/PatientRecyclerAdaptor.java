@@ -2,6 +2,7 @@ package com.example.bloodlink.adaptors;
 
 import android.content.Context;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
         holder.postedOnTextView.setText(obj.format(res));
 
         String DueDateStr = new PatientRecyclerAdaptor().formatDate(new Date(patientModel.getDueDate()));
-
+        Log.d("duedate", "onBindViewHolder: " + DueDateStr);
         holder.dueDateTextView.setText(DueDateStr);
         holder.authorTextView.setText(patientModel.getPatientName());
         holder.descriptionTextView.setText(patientModel.getDescription());
@@ -102,6 +103,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
 
         // Check if due date is in the future
         if (timeDifference > 0) {
+
             // Check if due date is tomorrow
             if (timeDifference < DateUtils.DAY_IN_MILLIS) {
                 return "Tomorrow";
@@ -111,7 +113,10 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
                 return DateUtils.getRelativeTimeSpanString(dueTime, now, DateUtils.DAY_IN_MILLIS, DateUtils.FORMAT_SHOW_WEEKDAY).toString();
             }
         }
-        // If due date is in the past or more than 7 days in the future, show the date
-        return DateUtils.formatDateTime(context, dueTime, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_TIME);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM, YYYY");
+        String date = simpleDateFormat.format(dueDate);
+
+        return date;
     }
 }
