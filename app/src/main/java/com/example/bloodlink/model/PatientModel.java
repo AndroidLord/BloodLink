@@ -1,15 +1,50 @@
 package com.example.bloodlink.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PatientModel {
+import androidx.annotation.NonNull;
+
+public class PatientModel implements Parcelable {
 
     private static PatientModel instance;
 
     private PatientModel() {
 
     }
+
+    protected PatientModel(Parcel in) {
+        patientName = in.readString();
+        gender = in.readString();
+        severity = in.readString();
+        email = in.readString();
+        phoneNo = in.readString();
+        bloodGroup = in.readString();
+        address = in.readString();
+        description = in.readString();
+        age = in.readString();
+        relationToPatient = in.readString();
+        patientImage = in.readString();
+        userName = in.readString();
+        userImage = in.readString();
+        dueDate = in.readLong();
+        PostedOn = in.readLong();
+    }
+
+    public static final Creator<PatientModel> CREATOR = new Creator<PatientModel>() {
+        @Override
+        public PatientModel createFromParcel(Parcel in) {
+            return new PatientModel(in);
+        }
+
+        @Override
+        public PatientModel[] newArray(int size) {
+            return new PatientModel[size];
+        }
+    };
+
     public static PatientModel getInstance(){
         if (instance==null){
             instance = new PatientModel();
@@ -151,6 +186,30 @@ public class PatientModel {
 
     public void setPostedOn(long postedOn) {
         PostedOn = postedOn;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(patientName);
+        dest.writeString(gender);
+        dest.writeString(severity);
+        dest.writeString(email);
+        dest.writeString(phoneNo);
+        dest.writeString(bloodGroup);
+        dest.writeString(address);
+        dest.writeString(description);
+        dest.writeString(age);
+        dest.writeString(relationToPatient);
+        dest.writeString(patientImage);
+        dest.writeString(userName);
+        dest.writeString(userImage);
+        dest.writeLong(dueDate);
+        dest.writeLong(PostedOn);
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.bloodlink.adaptors;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bloodlink.PatientActivity;
 import com.example.bloodlink.R;
 import com.example.bloodlink.model.PatientModel;
 
@@ -27,7 +29,9 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
     private Context context;
     private List<PatientModel> patientModelList;
 
+
     public PatientRecyclerAdaptor() {
+
     }
 
     public PatientRecyclerAdaptor(Context context, List<PatientModel> patientModelList) {
@@ -55,13 +59,14 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
         DateFormat obj = new SimpleDateFormat("d MMMM yyyy, hh:mma");
         // we create instance of the Date and pass milliseconds to the constructor
         Date res = new Date(patientModel.getPostedOn());
-        holder.postedOnTextView.setText(obj.format(res));
+        holder.postedOnTextView.setText("Posted On: "+obj.format(res));
 
-        String DueDateStr = new PatientRecyclerAdaptor().formatDate(new Date(patientModel.getDueDate()));
-        Log.d("duedate", "onBindViewHolder: " + DueDateStr);
-        holder.dueDateTextView.setText(DueDateStr);
-        holder.authorTextView.setText(patientModel.getPatientName());
-        holder.descriptionTextView.setText(patientModel.getDescription());
+        String DueDateStr = formatDate(new Date(patientModel.getDueDate()));
+        holder.dueDateTextView.setText("Due Date: "+DueDateStr);
+        holder.authorTextView.setText("Author: "+patientModel.getPatientName());
+        holder.descriptionTextView.setText("Description: "+patientModel.getDescription());
+
+
 
     }
 
@@ -70,7 +75,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
         return patientModelList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView titleTextView,
                          authorTextView,
@@ -80,6 +85,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
                          descriptionTextView;
 
         private ImageView userImageView;
+        private OnPatientDetailTransfer onPatientDetailTransfer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,10 +99,30 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
             userImageView = itemView.findViewById(R.id.imageView_item);
 
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PatientModel patientModel = patientModelList.get(getAdapterPosition());
+                    Intent intent = new Intent(context,PatientActivity.class);
+                    intent.putExtra("patient",patientModel);
+                    context.startActivity(intent);
+                }
+            });
+
         }
+
+    }
+    public PatientModel getPatientDetails(int position){
+        if(patientModelList!=null){
+                if(patientModelList.size() > 0){
+                    return patientModelList.get(position);
+                }
+        }
+        return null;
     }
 
-    public String formatDate(Date dueDate) {
+
+    public static String formatDate(Date dueDate) {
         long dueTime = dueDate.getTime();
         long now = System.currentTimeMillis();
         long timeDifference = dueTime - now;
@@ -114,7 +140,7 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
             }
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM, YYYY");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE, dd MMMM YYYY");
         String date = simpleDateFormat.format(dueDate);
 
         return date;

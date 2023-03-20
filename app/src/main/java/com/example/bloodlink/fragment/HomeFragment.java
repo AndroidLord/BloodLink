@@ -1,5 +1,6 @@
 package com.example.bloodlink.fragment;
 
+import android.content.Intent;
 import android.graphics.PathEffect;
 import android.os.Bundle;
 
@@ -15,7 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.bloodlink.PatientActivity;
 import com.example.bloodlink.R;
+import com.example.bloodlink.adaptors.OnPatientDetailTransfer;
+import com.example.bloodlink.adaptors.OnPatientRequestListener;
 import com.example.bloodlink.adaptors.PatientRecyclerAdaptor;
 import com.example.bloodlink.model.PatientModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +41,7 @@ public class HomeFragment extends Fragment {
     private PatientRecyclerAdaptor patientRecyclerAdaptor;
 
     private List<PatientModel> patientModelList;
+    OnPatientDetailTransfer onPatientDetailTransfer;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReference = db.collection("PatientRequestCollection");
@@ -58,6 +63,7 @@ public class HomeFragment extends Fragment {
 
          // Initiating List
         patientModelList = new ArrayList<>();
+
 
        return view;
     }
@@ -99,4 +105,5 @@ public class HomeFragment extends Fragment {
                 });
 
     }
+
 }

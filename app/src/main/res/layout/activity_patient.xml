@@ -9,15 +9,16 @@
     tools:context=".PatientActivity">
 
     <TextView
+        android:id="@+id/titleTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="26dp"
-        android:padding="10dp"
         android:background="@drawable/background_edit_text"
-        android:textAlignment="center"/>
+        android:padding="10dp"
+        android:text="Title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26dp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,15 +32,16 @@
             >
 
             <ImageView
+                android:id="@+id/userImage_Patient"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="5dp"
-                android:src="@drawable/profile">
+                android:src="@drawable/user">
 
             </ImageView>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/usernameTextView_Patient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -55,38 +57,39 @@
             >
 
             <TextView
+                android:id="@+id/severity_Patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/background_edit_text"
-                android:text="Severity"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:text="Severity" />
 
             <TextView
+                android:id="@+id/dueDateTextView_Patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@drawable/background_edit_text"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:text="Due date"/>
+                android:background="@drawable/background_edit_text"
+                android:padding="10dp"
+                android:text="Due date" />
 
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/patientImage_Patient"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:scaleType="center"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:scaleType="centerInside"
+            tools:src="@drawable/doctor" />
 
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/patientNameTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -97,40 +100,42 @@
         android:text="Name" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName1"
+        android:id="@+id/ageTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:ems="10"
         android:background="@drawable/background_edit_text"
+        android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:padding="10dp"
         android:text="Age" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/genderTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:ems="10"
         android:background="@drawable/background_edit_text"
+        android:ems="10"
         android:inputType="textPersonName"
         android:padding="10dp"
-        android:text="Sex" />
+        android:text="Gender" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/bloodgroupTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/background_edit_text"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:padding="10dp"
-        android:background="@drawable/background_edit_text"
-        android:text="Blood" />
+        android:text="@string/blood_group" />
 
     <TextView
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/descriptionTextView_Patient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
