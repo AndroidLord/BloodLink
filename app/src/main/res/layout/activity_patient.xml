@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/background_edit_text"
         android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:text="Title"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -80,10 +81,10 @@
         <ImageView
             android:id="@+id/patientImage_Patient"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="200dp"
             android:layout_marginTop="10dp"
             android:scaleType="centerInside"
-            tools:src="@drawable/doctor" />
+            android:src="@drawable/donation"/>
 
 
     </LinearLayout>

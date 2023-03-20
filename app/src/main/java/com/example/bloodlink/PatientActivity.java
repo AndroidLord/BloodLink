@@ -44,10 +44,10 @@ public class PatientActivity extends AppCompatActivity implements OnPatientDetai
         // ID's
         title = findViewById(R.id.titleTextView_Patient);
         userName = findViewById(R.id.usernameTextView_Patient);
-        //userImage = findViewById(R.id.userImage_Patient);
+        userImage = findViewById(R.id.userImage_Patient);
         dueDate = findViewById(R.id.dueDateTextView_Patient);
         severity = findViewById(R.id.severity_Patient);
-       // patientImage = findViewById(R.id.patientImage_Patient);
+        patientImage = findViewById(R.id.patientImage_Patient);
         patientName = findViewById(R.id.patientNameTextView_Patient);
         patientAge = findViewById(R.id.ageTextView_Patient);
         patientGender = findViewById(R.id.genderTextView_Patient);
@@ -71,6 +71,9 @@ public class PatientActivity extends AppCompatActivity implements OnPatientDetai
             patientBloodGroup.setText("Patient Blood Group: "+patientModel.getBloodGroup());
             patientDescription.setText("Description: "+patientModel.getDescription());
 
+            if(patientModel.getPatientImage()!=null){
+                //patientImage.setImageResource(patientModel.getPatientName());
+            }
 
         }
 

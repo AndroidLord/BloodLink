@@ -53,19 +53,19 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
 
         PatientModel patientModel = patientModelList.get(position);
 
+        holder.titleTextView.setText("Need "+patientModel.getBloodGroup()+" Blood Donar");
         holder.locationTextView.setText(patientModel.getAddress());
 
         Calendar calendar = Calendar.getInstance();
         DateFormat obj = new SimpleDateFormat("d MMMM yyyy, hh:mma");
         // we create instance of the Date and pass milliseconds to the constructor
         Date res = new Date(patientModel.getPostedOn());
-        holder.postedOnTextView.setText("Posted On: "+obj.format(res));
+        holder.postedOnTextView.setText(obj.format(res));
 
         String DueDateStr = formatDate(new Date(patientModel.getDueDate()));
-        holder.dueDateTextView.setText("Due Date: "+DueDateStr);
-        holder.authorTextView.setText("Author: "+patientModel.getPatientName());
+        holder.dueDateTextView.setText("Due Date: "+DueDateStr+" ");
+        holder.authorTextView.setText(patientModel.getPatientName());
         holder.descriptionTextView.setText("Description: "+patientModel.getDescription());
-
 
 
     }
@@ -91,12 +91,13 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
             super(itemView);
 
             titleTextView = itemView.findViewById(R.id.patient_title_item);
-            authorTextView = itemView.findViewById(R.id.author_item);
+            authorTextView = itemView.findViewById(R.id.userName_item);
             locationTextView = itemView.findViewById(R.id.location_item);
             postedOnTextView = itemView.findViewById(R.id.postedOn_item);
             dueDateTextView = itemView.findViewById(R.id.dueTime_item);
             descriptionTextView = itemView.findViewById(R.id.description_item);
-            userImageView = itemView.findViewById(R.id.imageView_item);
+            userImageView = itemView.findViewById(R.id.userImage_item);
+
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
