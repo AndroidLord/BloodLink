@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ProfileFragment">
+    tools:context=".UserDetailActivity">
 
 
     <LinearLayout
+        android:id="@+id/userLinearLayout_UserDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:id="@+id/toolbar_UserDetail"
+            app:titleTextColor="@color/red"
 
+            android:background="@color/red"
+            android:elevation="5dp"
+            app:menu="@menu/userdetailmenu"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -30,28 +41,29 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+
                     app:cardCornerRadius="50dp"
                     >
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="200dp"
                         android:layout_height="200dp"
                         android:layout_gravity="center"
-                        app:cardCornerRadius="100dp">
-
+                        app:cardCornerRadius="100dp"
+                        >
                         <ImageView
-                            android:id="@+id/userImageView_Profile"
-                            android:layout_width="match_parent"
+                            android:id="@+id/userImageView_UserDetail"
+                            android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:scaleType="centerInside"
                             android:src="@drawable/user"/>
-
                     </androidx.cardview.widget.CardView>
 
                 </androidx.cardview.widget.CardView>
 
 
                 <EditText
-                    android:id="@+id/userNameEditText_Profile"
+                    android:id="@+id/userNameEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -64,7 +76,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/phoneNoEditText_Profile"
+                    android:id="@+id/phoneNoEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="22dp"
@@ -79,7 +91,7 @@
                     android:textSize="19sp" />
 
                 <EditText
-                    android:id="@+id/emailEditText_Profile"
+                    android:id="@+id/emailEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:autofillHints="emailAddress"
@@ -93,7 +105,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/ageEditText_Profile"
+                    android:id="@+id/ageEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:autofillHints="age"
@@ -107,18 +119,18 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/bloodGroupEditText_Profile"
+                    android:id="@+id/bloodGroupEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
                     android:padding="12dp"
-                    android:singleLine="true"
                     android:layout_marginTop="22dp"
                     android:hint="Blood Group+"
-                    android:background="@drawable/background_edit_text"/>
+                    android:background="@drawable/background_edit_text"
+                    />
 
                 <EditText
-                    android:id="@+id/genderEditText_Profile"
+                    android:id="@+id/genderEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -129,7 +141,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/countryEditText_Profile"
+                    android:id="@+id/countryEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -142,7 +154,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/stateEditText_Profile"
+                    android:id="@+id/stateEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -155,7 +167,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/cityEditText_Profile"
+                    android:id="@+id/cityEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -168,7 +180,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/postalCodeEditText_Profile"
+                    android:id="@+id/postalCodeEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="19sp"
@@ -181,7 +193,7 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <EditText
-                    android:id="@+id/userDescriptionEditText_Profile"
+                    android:id="@+id/userDescriptionEditText_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autofillHints="description"
@@ -195,17 +207,17 @@
                     android:background="@drawable/background_edit_text"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/updateButton_Profile"
+                    android:id="@+id/updateButton_UserDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Update Profile"
+                    android:text="Save User Profile"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:padding="12dp"
                     android:inputType="textMultiLine"
                     android:layout_marginTop="18dp"
                     android:backgroundTint="#3897f0"
-                   android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="20dp"
                     app:cornerRadius="4dp"/>
 
             </LinearLayout>
@@ -214,5 +226,4 @@
 
     </LinearLayout>
 
-
-</FrameLayout>
+</RelativeLayout>

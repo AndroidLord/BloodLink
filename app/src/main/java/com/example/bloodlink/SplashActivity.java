@@ -23,6 +23,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
+    private FirebaseUser currentUser;
+
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference collectionReference = db.collection("UserCollections");
@@ -36,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                currentUser = firebaseAuth.getCurrentUser();
                 if (currentUser != null) {
 
                     collectionReference
@@ -50,38 +52,50 @@ public class SplashActivity extends AppCompatActivity {
                                 Log.d("splash", "onEvent: error: " + error.toString());
                             }
                             if(value!=null && !value.isEmpty()){
-
                                 String id = value.getDocuments().get(0).getString("userId");
                                 String name = value.getDocuments().get(0).getString("userName");
-                                String email = value.getDocuments().get(0).getString("userEmail");
+                                String email = value.getDocuments().get(0).getString("emailId");
 
                                 UserModel userModel = UserModel.getInstance();
                                 userModel.setUserName(name);
                                 userModel.setEmailId(email);
-                                userModel.setUserId(name);
+                                userModel.setUserId(id);
 
-                                //Toast.makeText(SplashActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(SplashActivity.this,DrawerActivity.class));
+                                    startActivity(new Intent(SplashActivity.this,DrawerActivity.class));
+                                    finish();
+
+                            }
+                            else
+                            {
+                                Toast.makeText(SplashActivity.this, "User has Been Deleted", Toast.LENGTH_SHORT).show();
+                                firebaseAuth.signOut();
+                                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                                 finish();
                             }
 
                         }
                     });
 
-                } else {
+                }
+
+                else {
+
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                    finish();
                 }
             }
         };
 
         int SPLASH_TIMING = 3000;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                firebaseAuth.addAuthStateListener(authStateListener);
-            }
-        },SPLASH_TIMING);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        currentUser = firebaseAuth.getCurrentUser();
+        firebaseAuth.addAuthStateListener(authStateListener);
 
     }
 

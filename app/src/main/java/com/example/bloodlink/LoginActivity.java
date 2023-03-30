@@ -134,16 +134,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                     Toast.makeText(LoginActivity.this, "LogIn Successful", Toast.LENGTH_SHORT).show();
 
-                                    for (QueryDocumentSnapshot documentSnapshot : value) {
 
-                                        UserModel userModel = UserModel.getInstance();
-                                        userModel.setUserId(currentUser.getUid());
-                                        userModel.setUserName(documentSnapshot.getString("userName"));
-                                        userModel.setEmailId(email);
+                                    UserModel userModel = UserModel.getInstance();
+                                    userModel = value.getDocuments().get(0).toObject(UserModel.class);
 
-                                        startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
-                                        finish();
-                                    }
+                                    startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
+                                    finish();
 
 
                                 } else {

@@ -111,12 +111,12 @@ public class CreateActivity extends AppCompatActivity {
                                 assert currentUser != null;
                                 String id=currentUser.getUid();
 
-                                Map<String,String> userObj=new HashMap<>();
-                                userObj.put("userId",id);
-                                userObj.put("userName",name);
-                                userObj.put("userEmail",email);
+                                UserModel userModel = UserModel.getInstance();
+                                userModel.setUserId(id);
+                                userModel.setEmailId(email);
+                                userModel.setUserName(name);
 
-                                userCollection.add(userObj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                userCollection.add(userModel).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
 
@@ -127,15 +127,11 @@ public class CreateActivity extends AppCompatActivity {
 
                                                 if(task.getResult().exists()){
 
-                                                    String id = task.getResult().getString("userId");
-
                                                     UserModel userModel = UserModel.getInstance();
-                                                    userModel.setUserId(id);
-                                                    userModel.setUserName(task.getResult().getString("userName"));
-                                                    userModel.setEmailId(task.getResult().getString("userEmail"));
+                                                    userModel = task.getResult().toObject(UserModel.class);
 
                                                     Toast.makeText(CreateActivity.this, "*Account Created Successfully*", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(CreateActivity.this,DrawerActivity.class));
+                                                    startActivity(new Intent(CreateActivity.this,UserDetailActivity.class));
                                                     finish();
                                                 }
                                             }

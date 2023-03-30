@@ -147,7 +147,6 @@
                         android:drawablePadding="8dp"
                         android:hint="+91 831846xxxx"
                         android:inputType="phone"
-                        android:importantForAutofill="auto"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:textSize="19sp" />
 
@@ -156,7 +155,7 @@
                         android:id="@+id/email_bloodRequest"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:autofillHints="phone"
+                        android:autofillHints="emailAddress"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/email_icon"
                         android:drawablePadding="8dp"
@@ -174,7 +173,7 @@
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"
                         android:padding="12dp"
-                        android:autofillHints="phone"
+                        android:autofillHints="postalAddress"
                         android:background="@drawable/background_edit_text"
                         android:drawableStart="@drawable/home_icon"
                         android:drawablePadding="8dp"
@@ -207,7 +206,7 @@
                         android:drawablePadding="8dp"
                         android:hint="@string/description"
                         android:importantForAutofill="auto"
-                        android:inputType="textLongMessage"
+                        android:inputType="textMultiLine"
                         android:layout_marginTop="20dp"
                         android:padding="12dp"
                         android:textSize="19sp" />

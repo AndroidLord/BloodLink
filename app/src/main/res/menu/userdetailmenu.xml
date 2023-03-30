@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/skip_UserDetail"
+        >
+
+        <item android:id="@+id/skipText_UserDetail"
+            app:showAsAction="ifRoom"
+            android:title="Skip This Page"
+            />
+        <item android:id="@+id/skipIcon_UserDetail"
+            app:showAsAction="ifRoom"
+            android:title="Skip This Page"
+            android:icon="@drawable/skip_icon"
+            />
+    </group>
+
+
+
+
+</menu>

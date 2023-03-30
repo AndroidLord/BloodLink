@@ -76,6 +76,7 @@ public class HomeFragment extends Fragment {
 
         collectionReference
                 .whereGreaterThanOrEqualTo("dueDate",System.currentTimeMillis())
+                .orderBy("dueDate")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
