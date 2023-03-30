@@ -19,14 +19,17 @@
             android:layout_height="wrap_content"
             >
 
-            <ImageView
-                android:id="@+id/userImage_item"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:padding="5dp"
-                android:src="@drawable/user">
 
-            </ImageView>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userImage_item"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:padding="5dp"
+                    android:src="@drawable/user"/>
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +41,10 @@
                     android:layout_height="wrap_content"
                     android:hint="User Name"
                     android:textColor="#000"
-                    android:padding="10dp" />
+                    android:paddingTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    />
 
                     <TextView
                         android:id="@+id/location_item"
@@ -65,10 +71,6 @@
                 android:layout_margin="5dp"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:src="@drawable/doctor"/>
 
                 <TextView
                     android:id="@+id/patient_title_item"

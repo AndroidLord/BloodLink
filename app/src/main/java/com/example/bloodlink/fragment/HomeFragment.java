@@ -24,6 +24,7 @@ import com.example.bloodlink.adaptors.PatientRecyclerAdaptor;
 import com.example.bloodlink.model.PatientModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
@@ -32,8 +33,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class HomeFragment extends Fragment {
 
@@ -74,8 +80,14 @@ public class HomeFragment extends Fragment {
 
         Log.d("home", "onStart: Going to Retrieve Data");
 
+
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Kolkata"));
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        Log.d("test", "onStart: millisecond "+ calendar.getTimeInMillis());
+
         collectionReference
-                .whereGreaterThanOrEqualTo("dueDate",System.currentTimeMillis())
+                .whereGreaterThanOrEqualTo("dueDate",calendar.getTimeInMillis())
                 .orderBy("dueDate")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -99,7 +111,7 @@ public class HomeFragment extends Fragment {
                             patientRecyclerAdaptor.notifyDataSetChanged();
                         }
                         else{
-                            Toast.makeText(getContext(), "There is no Data", Toast.LENGTH_SHORT).show();
+                            Snackbar.make(recyclerView,"No Blood Reqeust Found", Snackbar.LENGTH_SHORT).show();
                         }
 
                     }

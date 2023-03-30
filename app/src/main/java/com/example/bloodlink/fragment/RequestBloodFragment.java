@@ -1,8 +1,9 @@
 package com.example.bloodlink.fragment;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
+
 import android.os.Bundle;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
-import android.text.format.DateUtils;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,17 +33,22 @@ import android.widget.Toast;
 
 import com.example.bloodlink.R;
 import com.example.bloodlink.model.PatientModel;
+
 import com.example.bloodlink.model.UserModel;
+import com.example.bloodlink.utils.Credentials;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.firestore.CollectionReference;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -106,22 +112,14 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         calenderButton = view.findViewById(R.id.button);
 
 
-        calenderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                select_due_date();
-            }
-        });
+        calenderButton.setOnClickListener(v -> select_due_date());
 
-        genderTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        genderTextView.setOnClickListener(v -> {
 
 
-            bottomSheetFragment.show(getChildFragmentManager(),bottomSheetFragment.getTag());
-                genderTextView.setText(patientModel.getGender());
-                Log.d("blood", "onClick: " + patientModel.getGender());
-            }
+        bottomSheetFragment.show(getChildFragmentManager(),bottomSheetFragment.getTag());
+            genderTextView.setText(patientModel.getGender());
+            Log.d("blood", "onClick: " + patientModel.getGender());
         });
         savebutton.setOnClickListener(this);
         severityButton.setOnClickListener(this);
@@ -155,25 +153,23 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
     private void select_due_date(){
 
 
-        DatePickerDialog dialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        DatePickerDialog dialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> {
 
-                String str = dayOfMonth+"/"+(month+1)+"/"+year;
+            String str = dayOfMonth+"/"+(month+1)+"/"+year;
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-                try {
-                    Date date = dateFormat.parse(str);
-                    long milliseconds = date.getTime();
-                    patientModel.setDueDate(milliseconds);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Log.d("ee", "onDateSet: " + str);
+            try {
+                Date date = dateFormat.parse(str);
+                long milliseconds = date.getTime();
+                Log.d("tes", "onDateSet: " + milliseconds);
+                patientModel.setDueDate(milliseconds);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        }, 2023, 3, 18);
+
+            Log.d("ee", "onDateSet: " + str);
+        }, 2023, 2, 30);
         dialog.show();
 
 
@@ -261,6 +257,14 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         String description = descriptionEditText.getText().toString().trim();
         String severity = patientModel.getSeverity();
 
+        if((patientModel.getDueDate() - System.currentTimeMillis())<0){
+            Toast.makeText(getContext(), "Select A Valid Date", Toast.LENGTH_SHORT).show();
+            Log.d("tes", "saveData: " + (System.currentTimeMillis()));
+            Log.d("tes", "saveData: " + (patientModel.getDueDate()));
+            Log.d("tes", "saveData: " + (System.currentTimeMillis() - patientModel.getDueDate()));
+            return ;
+        }
+
         if(!TextUtils.isEmpty(patientName) &&
                 !TextUtils.isEmpty(gender) &&
                 !TextUtils.isEmpty(email) &&
@@ -325,53 +329,76 @@ public class RequestBloodFragment extends Fragment implements View.OnClickListen
         patientModel.setUserName(userModel.getUserName());
 
 
+        db.collection(Credentials.USER_COLLECTION)
+                .whereEqualTo("userId",Credentials.getCurrentUser().getUid())
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-        patientRequestCollection.add(patientModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentReference> task) {
+                        if(error!=null){
+                            Toast.makeText(getContext(), "Error Occurred", Toast.LENGTH_SHORT).show();
+                        }
 
-                if(task.isSuccessful()){
+                        if(value!=null && !value.isEmpty()){
 
-                    task.getResult().addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                               UserModel user = value.getDocuments().get(0).toObject(UserModel.class);
 
-                            if(error!=null){
-                                Toast.makeText(getContext(), "Data is Null", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                            if(value!=null && value.exists()){
-
-                                Toast.makeText(getContext(), "Request Successful", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
-                                linearLayout.setVisibility(View.VISIBLE);
+                               patientModel.setUserImage(user.getUserImage());
 
 
+                            patientRequestCollection.add(patientModel).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
 
-                                FragmentManager manager = getParentFragmentManager();
-                                FragmentTransaction transaction = manager.beginTransaction();
+                                    if(task.isSuccessful()){
+
+                                        task.getResult().addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                                                if(error!=null){
+                                                    Toast.makeText(getContext(), "Some Error Occurred", Toast.LENGTH_SHORT).show();
+                                                    return;
+                                                }
+                                                if(value!=null && value.exists()){
+
+                                                    Toast.makeText(getContext(), "Request Successful", Toast.LENGTH_SHORT).show();
+                                                    progressBar.setVisibility(View.GONE);
+                                                    linearLayout.setVisibility(View.VISIBLE);
 
 
-                                transaction.replace(R.id.fragment_container, new HomeFragment());
-                                //transaction.add(R.id.fragment_container,fragment);
-                                transaction.commit();
+
+                                                    FragmentManager manager = getParentFragmentManager();
+                                                    FragmentTransaction transaction = manager.beginTransaction();
 
 
-                            }
+                                                    transaction.replace(R.id.fragment_container, new HomeFragment());
+                                                    //transaction.add(R.id.fragment_container,fragment);
+                                                    transaction.commit();
+
+
+                                                }
+
+                                            }
+                                        });
+
+                                    }
+                                    else{
+                                        progressBar.setVisibility(View.GONE);
+                                        linearLayout.setVisibility(View.VISIBLE);
+                                        Toast.makeText(getContext(), "Request Failed", Toast.LENGTH_SHORT).show();
+                                        Log.d("requestBlood", "onComplete: Failure of Task: ");
+                                    }
+
+                                }
+                            });
+
+
 
                         }
-                    });
 
-                }
-                else{
-                    progressBar.setVisibility(View.GONE);
-                    linearLayout.setVisibility(View.VISIBLE);
-                    Toast.makeText(getContext(), "Request Failed", Toast.LENGTH_SHORT).show();
-                    Log.d("requestblood", "onComplete: Failure of Task: ");
-                }
-
-            }
-        });
+                    }
+                });
 
 
 

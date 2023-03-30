@@ -130,7 +130,7 @@ public class CreateActivity extends AppCompatActivity {
                                                     UserModel userModel = UserModel.getInstance();
                                                     userModel = task.getResult().toObject(UserModel.class);
 
-                                                    Toast.makeText(CreateActivity.this, "*Account Created Successfully*", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(CreateActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(CreateActivity.this,UserDetailActivity.class));
                                                     finish();
                                                 }

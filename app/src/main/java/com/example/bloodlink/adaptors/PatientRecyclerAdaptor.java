@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bloodlink.PatientActivity;
 import com.example.bloodlink.R;
 import com.example.bloodlink.model.PatientModel;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -64,9 +65,13 @@ public class PatientRecyclerAdaptor extends RecyclerView.Adapter<PatientRecycler
 
         String DueDateStr = formatDate(new Date(patientModel.getDueDate()));
         holder.dueDateTextView.setText("Due Date: "+DueDateStr+" ");
-        holder.authorTextView.setText(patientModel.getPatientName());
+        holder.authorTextView.setText(patientModel.getUserName());
         holder.descriptionTextView.setText("Description: "+patientModel.getDescription());
 
+        Picasso.get()
+                .load(patientModel.getUserImage())
+                .placeholder(R.drawable.user)
+                .into(holder.userImageView);
 
     }
 

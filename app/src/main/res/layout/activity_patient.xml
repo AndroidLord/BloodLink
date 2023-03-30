@@ -32,14 +32,14 @@
             android:layout_height="wrap_content"
             >
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userImage_Patient"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="5dp"
-                android:src="@drawable/user">
+                android:src="@drawable/user"/>
 
-            </ImageView>
+
 
             <TextView
                 android:id="@+id/usernameTextView_Patient"

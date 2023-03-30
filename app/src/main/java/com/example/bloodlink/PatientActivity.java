@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.bloodlink.adaptors.OnPatientDetailTransfer;
 import com.example.bloodlink.adaptors.PatientRecyclerAdaptor;
 import com.example.bloodlink.model.PatientModel;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -70,7 +71,7 @@ public class PatientActivity extends AppCompatActivity implements OnPatientDetai
             patientGender.setText("Patient Gender: "+patientModel.getGender());
             patientBloodGroup.setText("Patient Blood Group: "+patientModel.getBloodGroup());
             patientDescription.setText("Description: "+patientModel.getDescription());
-
+            Picasso.get().load(patientModel.getUserImage()).placeholder(R.drawable.user).into(userImage);
             if(patientModel.getPatientImage()!=null){
                 //patientImage.setImageResource(patientModel.getPatientName());
             }
