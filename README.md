@@ -38,5 +38,30 @@ The Contact Us section allows users to get in touch with the app's developers to
 ### Logout
 Users can logout of their account to ensure that their account remains secure and protected.
 
+## Technology Used
+- Java
+
+- XML
+
+- Firebase
+
+- Picasso
+
+## Future scope 
+
+- Implement Map for connecting Donor and Patient.
+- Add Messaging and Chat Function to the Patient Detail.
+- Intergrate API displaying local Blood Donation Center.
+- Improve UI and UX for better user experience
+- 
+## Installation
+- Clone the repository to your local machine.
+- Open the project in Android Studio.
+- Build and run the app on an emulator or physical device.
+
+## Contributing
+We welcome contributions to this project! If you'd like to contribute, please fork the repository and submit a pull request.
+
+
 ## Conclusion
 Blood Donation App is a user-friendly mobile application that aims to connect donors and recipients for blood donation. The app's features, such as authentication and account creation, dashboard, profile, achievements, request blood, about us, contact us, and logout, make it easy for users to find donors and request blood when they need it.
