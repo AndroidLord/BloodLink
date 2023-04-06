@@ -14,28 +14,28 @@
 ## Features
 The Blood Donation App has the following features:
 
-### Authentication and Account Creation
+### 1) Authentication and Account Creation
 Users can create a new account or login using their existing Google or Facebook accounts. Firebase authentication is used to secure user accounts and ensure that only authorized users can access the app.
 
-### Dashboard
+### 2) Dashboard
 The app's dashboard features a navigation drawer that allows users to access different sections of the app such as Profile, Achievements, Request Blood, About us, Contact Us, and Logout.
 
-### Profile
+### 3) Profile
 The Profile section allows users to view and edit their personal information, including their name, contact information, blood type, and location. Users can also view their donation history and achievements.
 
-### Achievements
+### 4) Achievements
 Users can view their achievements and statistics related to their blood donation history, such as the number of times they have donated blood and the number of lives they have saved.
 
-### Request Blood
+### 5) Request Blood
 The Request Blood section allows users to request blood from donors. Users can specify the blood type they need, the quantity required, and the location where the blood is needed. Donors can then view the requests and choose to donate if they meet the criteria.
 
-### About Us
+### 6) About Us
 The About Us section provides information about the app's developers, the mission of the app, and any relevant news or updates.
 
-### Contact Us
+### 7) Contact Us
 The Contact Us section allows users to get in touch with the app's developers to provide feedback or report any issues.
 
-### Logout
+### 8) Logout
 Users can logout of their account to ensure that their account remains secure and protected.
 
 ## Technology Used
