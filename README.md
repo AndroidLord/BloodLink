@@ -1,4 +1,6 @@
 # Blood Donation App
+<img align="center" src="https://github.com/AndroidLord/BloodLink/blob/master/image/intro.gif" alt="project-image">
+
 The Blood Donation App is an Android application built to connect blood donors with recipients. The app was created on Android Studio, using Java for the programming language, and Firebase for the backend, authentication, and database.
 
 ## Demo/Project
