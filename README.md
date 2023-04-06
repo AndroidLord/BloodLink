@@ -53,7 +53,7 @@ Users can logout of their account to ensure that their account remains secure an
 - Add Messaging and Chat Function to the Patient Detail.
 - Intergrate API displaying local Blood Donation Center.
 - Improve UI and UX for better user experience
-- 
+
 ## Installation
 - Clone the repository to your local machine.
 - Open the project in Android Studio.
